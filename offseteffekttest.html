@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" style="display: none">
+  <defs>
+    <filter id="filter" filterUnits="objectBoundingBox" primitiveUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+
+        <feTurbulence name="turbulence" type="turbulence" in="SourceGraphic" baseFrequency="0 0.05" numOctaves="2" seed="01" stitchTiles="stitch" result="turbulence"/>
+        
+        <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="20" xChannelSelector="A" yChannelSelector="A" result="waves"/>
+        
+        <feColorMatrix type="matrix" values="
+        1 0 0 0 0
+        0 0 0 0 0
+        0 0 0 0 0
+        0 0 0 1 0" in="waves" result="rt1"/>
+
+        <feOffset name="red" dx="20" dy="15" in="rt1" result="red"/>
+        
+        <feColorMatrix type="matrix" values="
+        0 0 0 0 0
+        0 0 0 0 0
+        0 0 1 0 0
+        0 0 0 1 0" in="waves" result="bt1"/>
+
+        <feOffset name="blue" dx="-20" dy="-12" in="bt1" result="blue"/>
+  
+        <feBlend mode="lighten" in="red" in2="blue" result="3d"/>
+
+        <feBlend mode="luminosity" in="waves" in2="3d" result="out1"/>
+
+    </filter>
+  </defs>
+</svg>
+
+
+
+
