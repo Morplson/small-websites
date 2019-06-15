@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>bubblemenu</title>
+</head>
+
+<style type="text/css">
+			*{
+			font-size: 14pt;
+
+			font-family: 'Raleway', sans-serif; 
+			scroll-behavior: smooth;
+		}
+
+		@media (min-width: 15rem) and ( max-width: 25rem){
+			*{
+				font-size: 12pt;
+			}
+		}
+
+		@media (max-width: 15rem){
+			*{
+				font-size: 11pt;
+			}
+		}
+
+
+		body{
+			font-weight: 300; 
+			x-overflow: hidden;
+			padding: 0;
+			margin: 0;
+		}
+</style>
+
+
+
+
+
+<style type="text/css">
+	aside.bubblemenu{
+		position: fixed;
+		top:0;
+		left:0;
+		z-index: 100;
+	}
+
+	aside.bubblemenu .menucapsule{
+		height: 2.5rem;
+		line-height: 2.5rem;
+		border-radius: 2.5rem;
+		padding-left: 2.5rem; 
+		margin-left: -2.5rem; 
+
+
+		background-color: white;
+		box-shadow: 0.25rem 0.25rem 0.5rem #8888;
+	}
+
+	aside.bubblemenu .menutext{
+		padding: 0rem;
+		height: 100%;
+		width: 0;
+
+		text-align: center;
+		float:left;
+		display: inline-block;
+
+		overflow: hidden;
+		text-overflow: clip;
+		white-space: nowrap;
+
+
+		transition: all .6s ease;
+	}
+
+	aside.bubblemenu:hover .menutext{
+		padding: 0 0.25rem;
+		width: 9rem;
+	}
+
+	aside.bubblemenu .menuicon{
+		padding: 0 0.75rem 0 0.75rem;
+		float:left;
+		display: inline-block;
+	}
+
+</style>
+
+
+<body>
+	<aside class="bubblemenu">
+		<div data-target="" class="menucapsule">
+			<div class="menutext">
+				Tag text 
+			</div>
+			<div class="menuicon">
+				"name"
+			</div>
+		</div>
+	</aside>
+
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

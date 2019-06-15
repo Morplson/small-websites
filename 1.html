@@ -30,18 +30,18 @@
 		console.info("init");
 
 		for (const insert of inserts) {
-  				insert.addEventListener("mouseenter", wavesEffect, false);
+  				insert.addEventListener("mouseenter", waves3dEffect, false);
 		}
 	}
 
 
-	function wavesEffect(event) {
+	function waves3dEffect(event) {
 		elementcounter += 1;
 		let name = "wave"+elementcounter;
 
 		let cloned = document.getElementById("dummyWaves").cloneNode(true);
 
-		cloned.id = name;
+		cloned.id = "cont"+name;
 		
 
 		let filter = cloned.querySelector("defs filter");
@@ -49,15 +49,52 @@
 		let red = cloned.querySelector("defs filter *[name='red']");
 		let blue = cloned.querySelector("defs filter *[name='blue']");
 
+		filter.id = name;
+
 		document.getElementById('activeContainer').appendChild(cloned);
 
 
 		event.target.style.filter = "url('#"+name+"')";
 
+		turbulence.seed.baseVal = ""+Math.floor(Math.random() * (1000 - 1) + 1);
+
+		let start = null;
+
+		let rdx = Math.random() * (20 - 5) + 5;
+		let rdy = Math.random() * (7 - 2) + 2;
+
+		let bdx	= Math.random() * (2 - 0) + 0;
+		let bdy	= Math.random() * (2 - 0) + 0;
+
+
+		function animation3d(timestamp) {
+			if (!start) start = timestamp;
+			let progress = timestamp - start;
+
+			let adder = (progress<250)?progress:500-progress;
+
+			red.dx.baseVal = ""+(rdx/250)*adder;
+			red.dy.baseVal = ""+(rdy/250)*adder;
+
+			blue.dx.baseVal = "-"+(bdx/250)*adder;
+			blue.dy.baseVal = "-"+(bdy/250)*adder;
+
+
+			turbulence.baseFrequencyY.baseVal = (0.25/250)*adder;
+
+
+			if(progress<500){
+				window.requestAnimationFrame(animation3d);
+			}
+			
+		}
+
+		window.requestAnimationFrame(animation3d);
+
 		setTimeout(function() {
 			document.getElementById('activeContainer').removeChild(cloned)
     		event.target.style.filter = "";
-  		}, 5000);
+  		}, 500);
 	}
 
 
@@ -67,7 +104,7 @@
 	</head>
 	<body>
 		<main>
-			<div class=""  >
+			<div class="effect"  >
 				<h1>jenga-tournament<h1>
 
 				<h2 class="bouncey">1000$ Bountey<h2>
@@ -84,44 +121,41 @@
 <div height="0px" id="activeContainer"></div>
 
 <div height="0px" id="dummyContainer">
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" id="dummyWaves">
-  <defs>
-    <filter id="filter" color-interpolation-filters="sRGB" x="-40%" y="-40%" width="180%" height="180%" filterUnits="objectBoundingBox">
+	<svg xmlns="http://www.w3.org/2000/svg" version="1.1" id="dummyWaves">
+		<defs>
+	
+			<filter id="filter" color-interpolation-filters="sRGB" x="-40%" y="-40%" width="180%" height="180%" filterUnits="objectBoundingBox">
 
-        <feTurbulence name="turbulence" type="fractalNoise" in="SourceGraphic" baseFrequency="0 0.1" numOctaves="1" seed="01" stitchTiles="stitch" result="turbulence"/>
+				<feTurbulence name="turbulence" type="fractalNoise" in="SourceGraphic" baseFrequency="0 0" numOctaves="1" seed="01" stitchTiles="stitch" result="turbulence"/>
         
-        <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="20"xChannelSelector="A" yChannelSelector="A" result="waves"/>
-        
-        
-		<feOffset name="red" dx="20" dy="15" in="waves" result="rt1"/>
-        
-        <feColorMatrix type="matrix" values="
-        1 0 0 0.5 0
-        0 0 0 0 0
-        0 0 0 0 0
-        0 0 0 1 0" in="rt1" result="red"/>
+				<feDisplacementMap in="SourceGraphic" in2="turbulence" scale="20"xChannelSelector="A" yChannelSelector="A" result="waves"/>
         
         
-        <feOffset name="blue" dx="-20" dy="-12" in="waves" result="bt1"/>
+				<feOffset name="red" dx="0" dy="0" in="waves" result="rt1"/>
+        
+				<feColorMatrix type="matrix" values="
+				1 0 0 0 0
+				0 0 0 0 0
+				0 0 0 0 0
+				0 0 0 1 0" in="rt1" result="red"/>
+        
+        
+				<feOffset name="blue" dx="-0" dy="-0" in="waves" result="bt1"/>
 
-        <feColorMatrix type="matrix" values="
-        0 0 0 0 0
-        0 0 0 0 0
-        0 0 1 0.5 0
-        0 0 0 1 0" in="bt1" result="blue"/>
-
-        
+				<feColorMatrix type="matrix" values="
+				0 0 0 0 0
+				0 1 0 0 0
+				0 0 1 0 0
+				0 0 0 1 0" in="bt1" result="blue"/>
   
-        <feBlend mode="lighten" in="red" in2="blue" result="3d"/>
+				<feBlend mode="screen" in="red" in2="blue" result="3d"/>
 
-        <feBlend mode="luminosity" in="waves" in2="3d" result="out1"/>
-
-    </filter>
-  </defs>
-</svg>
-
-
+			</filter>
+		</defs>
+	</svg>
 </div>
+
+
 
 
 	</body>

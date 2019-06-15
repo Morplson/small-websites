@@ -91,6 +91,11 @@
 			}
 		}
 
+		#dummyContainer, #activeContainer{
+			height: 0;
+			overflow: hidden;
+		}
+
 
 		h1{
 			font-weight: 400;
@@ -106,8 +111,27 @@
 		}
 
 		p{
-			margin: 1rem 0 0.5rem 0;
+			margin: 0.25rem 0 0.5rem 0;
 		}
+
+		img{
+			width:100%;
+			height: auto;
+			max-height: 25rem;
+		}
+
+		picture{
+			width: 100%;
+			float: left;
+		}
+
+		picture > img{
+			object-fit: cover;
+			min-height: 15em;
+		}
+
+
+		
 
 
 
@@ -118,7 +142,7 @@
 
 	<main>
 		
-		<div class="box">
+		<div class="box ">
 			<div class="inside">
 				<h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h1>
 				<h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h2>
@@ -131,80 +155,267 @@
 
 
 		<div class="box b2 s2">
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			tempor incididunt ut labore et dolore magna aliqua. 
+			<div class="inside">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. 
+				</p>
+				<picture>
+					<img src="https://picsum.photos/400/300/">
+				</picture>
+				
+			</div>
 		</div>
 
 		<div class="box b2 s2">
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			tempor incididunt ut labore et dolore magna aliqua. 
+			<div class="inside">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. 
+				</p>
+			
+				<picture class="effect">
+					<img src="https://picsum.photos/400/200/">
+				</picture>
+			</div>
+			
 		</div>
 
 
 		<div class="box b3 s3">
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			tempor incididunt ut labore et dolore magna aliqua. 
+			<div class="inside">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. 
+				</p>
+			</div> 
+		</div>
+
+		<div class="box b3 s3 ">
+			<div class="inside">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. 
+				</p>
+			</div> 
 		</div>
 
 		<div class="box b3 s3">
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			tempor incididunt ut labore et dolore magna aliqua. 
-		</div>
-
-		<div class="box b3 s3">
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			tempor incididunt ut labore et dolore magna aliqua. 
+			<div class="inside">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. 
+				</p>
+			</div> 
 		</div>
 
 
 		<div class="box b4">
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			tempor incididunt ut labore et dolore magna aliqua. 
+			<div class="inside">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. 
+				</p>
+			</div>  
 		</div>
 
 		<div class="box b4">
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			tempor incididunt ut labore et dolore magna aliqua. 
+			<div class="inside">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. 
+				</p>
+			</div> 
 		</div>
 
 		<div class="box b4">
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			tempor incididunt ut labore et dolore magna aliqua. 
+			<div class="inside">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. 
+				</p>
+			</div> 
 		</div>
 
 		<div class="box b4">
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			tempor incididunt ut labore et dolore magna aliqua. 
+			<div class="inside">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. 
+				</p>
+			</div> 
 		</div>
 
 
 		<div class="box b5">
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			tempor incididunt ut labore et dolore magna aliqua. 
+			<div class="inside">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. 
+				</p>
+			</div> 
 		</div>
 
 		<div class="box b5">
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			tempor incididunt ut labore et dolore magna aliqua. 
+			<div class="inside">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. 
+				</p>
+			</div> 
 		</div>
 
 		<div class="box b5">
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			tempor incididunt ut labore et dolore magna aliqua. 
+			<div class="inside">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. 
+				</p>
+			</div> 
 		</div>
 
 		<div class="box b5">
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			tempor incididunt ut labore et dolore magna aliqua. 
+			<div class="inside">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. 
+				</p>
+			</div> 
 		</div>
 
 		<div class="box b5">
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			tempor incididunt ut labore et dolore magna aliqua. 
+			<div class="inside">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. 
+				</p>
+			</div> 
 		</div>
 
 	</main>
 
+
+
+<script type="text/javascript">
+	var elementcounter = 0;
+	window.addEventListener('load', function() {
+    	initEffectHandler();
+	});
+		
+	
+
+	function initEffectHandler() {
+		const inserts = document.querySelectorAll('.effect');
+		console.info("init");
+
+		for (const insert of inserts) {
+  				insert.addEventListener("mouseenter", waves3dEffect, false);
+		}
+	}
+
+
+	function waves3dEffect(event) {
+		elementcounter += 1;
+		let name = "wave"+elementcounter;
+
+		let cloned = document.getElementById("dummyWaves").cloneNode(true);
+
+		cloned.id = "cont"+name;
+		
+
+		let filter = cloned.querySelector("defs filter");
+		let turbulence = cloned.querySelector("defs filter *[name='turbulence']");
+		let red = cloned.querySelector("defs filter *[name='red']");
+		let blue = cloned.querySelector("defs filter *[name='blue']");
+
+		filter.id = name;
+
+		document.getElementById('activeContainer').appendChild(cloned);
+
+
+		event.target.style.filter = "url('#"+name+"')";
+
+		turbulence.seed.baseVal = ""+Math.floor(Math.random() * (1000 - 1) + 1);
+
+		let start = null;
+
+		let rdx = Math.random() * (20 - 5) + 5;
+		let rdy = Math.random() * (7 - 2) + 2;
+
+		let bdx	= Math.random() * (2 - 0) + 0;
+		let bdy	= Math.random() * (2 - 0) + 0;
+
+
+		function animation3d(timestamp) {
+			if (!start) start = timestamp;
+			let progress = timestamp - start;
+
+			let adder = (progress<250)?progress:500-progress;
+
+			red.dx.baseVal = ""+(rdx/250)*adder;
+			red.dy.baseVal = ""+(rdy/250)*adder;
+
+			blue.dx.baseVal = "-"+(bdx/250)*adder;
+			blue.dy.baseVal = "-"+(bdy/250)*adder;
+
+
+			turbulence.baseFrequencyY.baseVal = (0.25/250)*adder;
+
+
+			if(progress<500){
+				window.requestAnimationFrame(animation3d);
+			}
+			
+		}
+
+		window.requestAnimationFrame(animation3d);
+
+		setTimeout(function() {
+			document.getElementById('activeContainer').removeChild(cloned)
+    		event.target.style.filter = "";
+  		}, 500);
+	}
+
+
+
+</script>
+<div height="0px" id="activeContainer"></div>
+
+<div height="0px" id="dummyContainer">
+	<svg xmlns="http://www.w3.org/2000/svg" version="1.1" id="dummyWaves">
+		<defs>
+	
+			<filter id="filter" color-interpolation-filters="sRGB" x="-40%" y="-40%" width="180%" height="180%" filterUnits="objectBoundingbox">
+
+				<feTurbulence name="turbulence" type="fractalNoise" in="SourceGraphic" baseFrequency="0 0" numOctaves="1" seed="01" stitchTiles="stitch" result="turbulence"/>
+        
+				<feDisplacementMap in="SourceGraphic" in2="turbulence" scale="20"xChannelSelector="A" yChannelSelector="A" result="waves"/>
+        
+        
+				<feOffset name="red" dx="0" dy="0" in="waves" result="rt1"/>
+        
+				<feColorMatrix type="matrix" values="
+				1 0 0 0 0
+				0 0 0 0 0
+				0 0 0 0 0
+				0 0 0 1 0" in="rt1" result="red"/>
+        
+        
+				<feOffset name="blue" dx="-0" dy="-0" in="waves" result="bt1"/>
+
+				<feColorMatrix type="matrix" values="
+				0 0 0 0 0
+				0 1 0 0 0
+				0 0 1 0 0
+				0 0 0 1 0" in="bt1" result="blue"/>
+  
+				<feBlend mode="screen" in="red" in2="blue" result="3d"/>
+
+			</filter>
+		</defs>
+	</svg>
+</div>
+
 </body>
+
 </html>
