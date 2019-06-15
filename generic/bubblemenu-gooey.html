@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>bubblemenu</title>
+</head>
+
+<style type="text/css">
+			*{
+			font-size: 14pt;
+
+			font-family: 'Raleway', sans-serif; 
+			scroll-behavior: smooth;
+		}
+
+		@media (min-width: 15rem) and ( max-width: 25rem){
+			*{
+				font-size: 12pt;
+			}
+		}
+
+		@media (max-width: 15rem){
+			*{
+				font-size: 11pt;
+			}
+		}
+
+
+		body{
+			font-weight: 300; 
+			x-overflow: hidden;
+			padding: 0;
+			margin: 0;
+		}
+
+
+			#dummyContainer, #activeContainer{
+				height: 0;
+				overflow: hidden;
+
+			}
+</style>
+
+
+
+
+
+<style type="text/css">
+
+	aside.bubblemenu{
+		position: fixed;
+		top:0;
+		left:0;
+		z-index: 100;
+		filter: url("#goo");
+		height: 100%;
+	}
+
+	aside.bubblemenu > .menucapsule{
+		margin-top: 5rem;
+
+
+		height: 2.5rem;
+		line-height: 2.5rem;
+		border-radius: 2.5rem;
+		padding-left: 2.5rem; 
+		margin-left: -2.5rem; 
+
+		display: table;
+
+
+		cursor: pointer;
+
+		background-color: white;
+		box-shadow: 0.25rem 0.25rem 0.5rem #8888;
+	}
+
+	.menucapsule > .menutext{
+		padding: 0rem;
+		height: 100%;
+		width: 0;
+
+		text-align: center;
+		float:left;
+		display: inline-block;
+
+		overflow: hidden;
+		text-overflow: clip;
+		white-space: nowrap;
+
+
+		transition: all .6s ease;
+	}
+
+	.menucapsule:hover > .menutext{
+		padding: 0 0.25rem;
+		width: 9rem;
+	}
+
+	aside.bubblemenu > .menucapsule > .menuicon{
+		padding: 0 0.75rem 0 0.75rem;
+		float:left;
+		display: inline-block;
+	}
+
+	aside.bubblemenu .sidecover{
+		position: absolute;
+		top:0;
+		left:-5rem;
+		width: 5rem;
+		height: 100%;
+
+		background-color: white;
+
+	}
+
+</style>
+
+
+<body>
+	<aside class="bubblemenu">
+		
+		<div data-target="" class="menucapsule">
+			<div class="menutext">
+				"Tag text"
+			</div>
+			<div class="menuicon">
+				"name"
+			</div>
+		</div>
+		<div data-target="" class="menucapsule">
+			<div class="menutext">
+				"Tag text"
+			</div>
+			<div class="menuicon">
+				"name"
+			</div>
+		</div>
+		<div data-target="" class="menucapsule">
+			<div class="menutext">
+				"Tag text"
+			</div>
+			<div class="menuicon">
+				"name"
+			</div>
+		</div>
+		<div class="sidecover"></div>
+	</aside>
+
+<div height="0px" id="dummyContainer">
+
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+  <defs>
+      <filter id="goo">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+      <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
+      <feComposite in="SourceGraphic" in2="goo" operator="atop"/>
+    </filter>
+    <filter id='noise'>
+      <feTurbulence type="fractalNoise" id="turbulence" baseFrequency="0 0.000001" result="noise" numOctaves="2" />
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="30" xChannelSelector="R" yChannelSelector="R"></feDisplacementMap>
+	</filter>
+  </defs>
+</svg>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
