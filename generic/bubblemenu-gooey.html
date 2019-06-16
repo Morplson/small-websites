@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>bubblemenu</title>
+	<title>bubblemenu-gooey</title>
 </head>
 
-<style type="text/css">
-			*{
+	<style type="text/css">
+
+		@import url('https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900&display=swap');
+
+		*{
 			font-size: 14pt;
 
 			font-family: 'Raleway', sans-serif; 
@@ -32,12 +35,101 @@
 			margin: 0;
 		}
 
+		main{
+			margin: 0.25rem 3.5rem;
+			display: flex;
 
-			#dummyContainer, #activeContainer{
-				height: 0;
-				overflow: hidden;
+			flex-wrap: wrap;
+			flex-direction: row;
+			justify-content: space-evenly;
+			align-items: stretch;
+			align-content: space-around;
 
+		}
+
+
+		.box{
+			text-align: center;
+			padding: 1rem;
+			float: left;
+
+			box-sizing: border-box;
+		}
+
+		.box>.inside{
+			box-sizing: content-box;
+
+			padding: 1rem 0;
+		}
+
+		@media only screen and (min-width: 15rem) and ( max-width: 25rem){
+
+			.box.s2{
+				width: 50%;
 			}
+
+			.box.s3{
+				width: 33.3%;
+			}
+		}
+
+		@media only screen and (min-width: 25rem){
+
+			.box.b2{
+				width: 50%;
+			}
+
+			.box.b3{
+				width: 33.3%;
+			}
+
+			.box.b4{
+				width: 25%;
+			}
+
+			.box.b5{
+				width: 20%;
+			}
+		}
+
+		#dummyContainer, #activeContainer{
+			height: 0;
+			overflow: hidden;
+		}
+
+
+		h1,.h1{
+			font-weight: 400;
+			font-size: 3rem;
+			margin: 1rem 0 0.5rem 0;
+		}
+
+
+		h2,.h2{
+			font-weight: 300;
+			font-size: 2.25rem;
+			margin: 1rem 0 0.5rem 0;
+		}
+
+		p{
+			margin: 0.25rem 0 0.5rem 0;
+		}
+
+		img{
+			max-width:100%;
+			height: auto;
+			max-height: 25rem;
+		}
+
+		picture{
+			width: 100%;
+			float: left;
+		}
+
+		picture > img{
+			object-fit: cover;
+			min-height: 15em;
+		}
 </style>
 
 
@@ -46,18 +138,31 @@
 
 <style type="text/css">
 
-	aside.bubblemenu{
+	aside.bubblemenu-gooey{
+		filter: url("#bubblemenu-gooey-filter");
+
 		position: fixed;
-		top:0;
+		top:10%;
 		left:0;
-		z-index: 100;
-		filter: url("#goo");
-		height: 100%;
+		height: 50%;
+
+		-webkit-user-select: none;
+		-moz-user-select: none; 
+		-ms-user-select: none;
+		user-select: none; 
+
+		display: flex;
+		flex-direction: column;
+		justify-content: space-evenly;
+		align-items: flex-start;
+
 	}
 
-	aside.bubblemenu > .menucapsule{
-		margin-top: 5rem;
+	aside.bubblemenu-gooey > .menucapsule{
 
+		z-index: 100;
+
+		font-size: 1rem;
 
 		height: 2.5rem;
 		line-height: 2.5rem;
@@ -65,16 +170,18 @@
 		padding-left: 2.5rem; 
 		margin-left: -2.5rem; 
 
-		display: table;
+		white-space: nowrap;
+		transition: all .6s ease;
 
 
 		cursor: pointer;
 
 		background-color: white;
-		box-shadow: 0.25rem 0.25rem 0.5rem #8888;
+		box-shadow: 0.125rem 0.125rem 0.25rem #999999;
 	}
 
 	.menucapsule > .menutext{
+		font-size: inherit;
 		padding: 0rem;
 		height: 100%;
 		width: 0;
@@ -91,22 +198,45 @@
 		transition: all .6s ease;
 	}
 
-	.menucapsule:hover > .menutext{
+	aside.bubblemenu-gooey > .menucapsule:hover > .menutext{
 		padding: 0 0.25rem;
 		width: 9rem;
+
 	}
 
-	aside.bubblemenu > .menucapsule > .menuicon{
-		padding: 0 0.75rem 0 0.75rem;
+	aside.bubblemenu-gooey > .menucapsule:hover{
+		background-color: #f2f2f2;
+	}
+
+	aside.bubblemenu-gooey > .menucapsule > .menuicon{
+		font-size: inherit;
+
+		width:3rem;
+
+		text-align: center;
 		float:left;
 		display: inline-block;
+
+		overflow: hidden;
+		text-overflow: clip;
+		white-space: nowrap;
 	}
 
-	aside.bubblemenu .sidecover{
+	aside.bubblemenu-gooey > .menucapsule.active{
+		font-size: 1.125rem;
+		height: 3rem !important;
+		line-height: 3rem !important;
+		border-radius: 3rem !important;
+		padding-left: 3rem !important;
+		margin-left: -3rem !important;
+		
+	}
+
+	aside.bubblemenu-gooey .sidecover{
 		position: absolute;
 		top:0;
-		left:-5rem;
-		width: 5rem;
+		left:-0.8rem;
+		width: 1rem;
 		height: 100%;
 
 		background-color: white;
@@ -117,48 +247,308 @@
 
 
 <body>
-	<aside class="bubblemenu">
+	<aside class="bubblemenu-gooey">
 		
-		<div data-target="" class="menucapsule">
+		<div data-target="one" class="menucapsule">
 			<div class="menutext">
 				"Tag text"
 			</div>
 			<div class="menuicon">
-				"name"
+				1
 			</div>
 		</div>
-		<div data-target="" class="menucapsule">
+		<div data-target="two" class="menucapsule">
 			<div class="menutext">
 				"Tag text"
 			</div>
 			<div class="menuicon">
-				"name"
+				2
 			</div>
 		</div>
-		<div data-target="" class="menucapsule">
+		<div data-target="three" class="menucapsule">
 			<div class="menutext">
 				"Tag text"
 			</div>
 			<div class="menuicon">
-				"name"
+				3
+			</div>
+		</div>
+		<div data-target="four" class="menucapsule">
+			<div class="menutext">
+				"Tag text"
+			</div>
+			<div class="menuicon">
+				4
+			</div>
+		</div>
+		<div data-target="five" class="menucapsule">
+			<div class="menutext">
+				"Tag text"
+			</div>
+			<div class="menuicon">
+				5
 			</div>
 		</div>
 		<div class="sidecover"></div>
 	</aside>
 
+	<main>
+		
+		<div class="box " id="one">
+			<div class="inside">
+				<h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h1>
+				<h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h2>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. 
+				</p>
+			</div>
+		</div>
+
+
+		<div class="box b2 s2" id="two">
+			<div class="inside">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. 
+				</p>
+				<picture>
+					<img src="https://picsum.photos/400/300/">
+				</picture>
+				
+			</div>
+		</div>
+
+		<div class="box b2 s2">
+			<div class="inside">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. 
+				</p>
+			
+				<picture class="effect">
+					<img src="https://picsum.photos/400/200/">
+				</picture>
+			</div>
+			
+		</div>
+
+
+		<div class="box b3 s3" id="three">
+			<div class="inside">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. 
+				</p>
+			</div> 
+		</div>
+
+		<div class="box b3 s3 ">
+			<div class="inside">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. 
+				</p>
+			</div> 
+		</div>
+
+		<div class="box b3 s3">
+			<div class="inside">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. 
+				</p>
+			</div> 
+		</div>
+
+
+		<div class="box b4" id="four">
+			<div class="inside">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. 
+				</p>
+			</div>  
+		</div>
+
+		<div class="box b4">
+			<div class="inside">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. 
+				</p>
+			</div> 
+		</div>
+
+		<div class="box b4">
+			<div class="inside">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. 
+				</p>
+			</div> 
+		</div>
+
+		<div class="box b4">
+			<div class="inside">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. 
+				</p>
+			</div> 
+		</div>
+
+
+		<div class="box b5" id="five">
+			<div class="inside">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. 
+				</p>
+			</div> 
+		</div>
+
+		<div class="box b5">
+			<div class="inside">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. 
+				</p>
+			</div> 
+		</div>
+
+		<div class="box b5">
+			<div class="inside">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. 
+				</p>
+			</div> 
+		</div>
+
+		<div class="box b5">
+			<div class="inside">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. 
+				</p>
+			</div> 
+		</div>
+
+		<div class="box b5">
+			<div class="inside">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. 
+				</p>
+			</div> 
+		</div>
+
+	</main>
+
+	<script type="text/javascript">
+	window.addEventListener('load', function() {
+    	initBubbleBar();
+	});
+		
+	
+
+	function initBubbleBar(methode) {
+		if (!methode) {
+			methode = "click";
+		}
+
+		document.addEventListener("scroll", activeChecker, false);
+		window.scrollTo(0,1);
+
+		const inserts = document.querySelectorAll('.menucapsule');
+		console.info("initBubbleBar");
+
+		for (const insert of inserts) {
+			insert.addEventListener(methode, menuScroll, false);
+
+		}
+	}
+
+	function menuScroll(event) {
+		let target = event.currentTarget.dataset.target;
+
+		document.getElementById(target).scrollIntoView();
+	}
+
+
+
+
+
+	function activeChecker() {
+
+		const inserts = document.querySelectorAll('.menucapsule');
+
+		for (const insert of inserts) {
+			let crr = checkVisible(document.getElementById(insert.dataset.target), 200);
+
+			if (crr) {
+				insert.classList.add("active");
+			}else{
+				insert.classList.remove("active");
+			}
+		}
+
+		
+
+	};
+
+
+	function checkVisible(elm, threshold, mode) {
+		threshold = threshold || 0;
+		mode = mode || 'visible';
+
+		var rect = elm.getBoundingClientRect();
+		var viewHeight = Math.max(document.documentElement.clientHeight, window.innerHeight);
+		var above = rect.bottom - threshold < 0;
+		var below = rect.top - viewHeight + threshold >= 0;
+
+		return mode === 'above' ? above : (mode === 'below' ? below : !above && !below);
+	}
+
+</script>
+
 <div height="0px" id="dummyContainer">
 
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
   <defs>
-      <filter id="goo">
+      <filter >
       <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
-      <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
+      <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0
+      												 0 1 0 0 0
+      												 0 0 1 0 0
+      												 0 0 0 19 -9" result="goo" />
+
       <feComposite in="SourceGraphic" in2="goo" operator="atop"/>
+
+      <feFlood flood-color="#999999" result="shadowcolor"></feFlood>
+      <feComposite in="shadowcolor" in2="atop" operator="in" result="gray"></feComposite>
+
+      <feOffset result="offOut" in="gray" dx="20" dy="20" />
+      <feGaussianBlur result="blurOut" in="offOut" stdDeviation="10" />
+      <feBlend in="atop" in2="blurOut" mode="normal" />
     </filter>
-    <filter id='noise'>
-      <feTurbulence type="fractalNoise" id="turbulence" baseFrequency="0 0.000001" result="noise" numOctaves="2" />
-      <feDisplacementMap in="SourceGraphic" in2="noise" scale="30" xChannelSelector="R" yChannelSelector="R"></feDisplacementMap>
-	</filter>
+
+    <filter id="bubblemenu-gooey-filter">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+      <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0
+      												 0 1 0 0 0
+      												 0 0 1 0 0
+      												 0 0 0 19 -9" result="goo" />
+
+      <feComposite in="SourceGraphic" in2="goo" operator="atop" result="composite"/>
+
+      <feFlood flood-color="#999999" flood-opacity="1" result="flood"/>
+      <feComposite in="flood" in2="composite" operator="in"  result="composite1"/>
+      <feOffset dx="3" dy="3" in="composite1" result="offset"/>
+      <feGaussianBlur stdDeviation="6 6" in="offset" edgeMode="none" result="blur1"/>
+      <feBlend mode="normal" in="composite" in2="blur1" result="blend"/>
+    </filter>
   </defs>
 </svg>
 </div>

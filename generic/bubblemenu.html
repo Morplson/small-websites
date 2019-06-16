@@ -144,7 +144,10 @@
 		left:0;
 		height: 50%;
 
-
+		-webkit-user-select: none;
+		-moz-user-select: none; 
+		-ms-user-select: none;
+		user-select: none; 
 
 		display: flex;
 		flex-direction: column;
@@ -157,7 +160,7 @@
 
 		z-index: 100;
 
-		font-size: 1.25rem;
+		font-size: 1rem;
 
 		height: 2.5rem;
 		line-height: 2.5rem;
@@ -172,10 +175,11 @@
 		cursor: pointer;
 
 		background-color: white;
-		box-shadow: 0.25rem 0.25rem 0.5rem #8888;
+		box-shadow: 0.125rem 0.125rem 0.25rem #999999;
 	}
 
 	.menucapsule > .menutext{
+		font-size: inherit;
 		padding: 0rem;
 		height: 100%;
 		width: 0;
@@ -192,12 +196,18 @@
 		transition: all .6s ease;
 	}
 
-	.menucapsule:hover > .menutext{
+	aside.bubblemenu > .menucapsule:hover > .menutext{
 		padding: 0 0.25rem;
 		width: 9rem;
+
+	}
+
+	aside.bubblemenu > .menucapsule:hover{
+		background-color: #f2f2f2;
 	}
 
 	aside.bubblemenu > .menucapsule > .menuicon{
+		font-size: inherit;
 
 		width:3rem;
 
@@ -211,7 +221,7 @@
 	}
 
 	aside.bubblemenu > .menucapsule.active{
-		font-size: 2.5rem !important;
+		font-size: 1.125rem;
 		height: 3rem !important;
 		line-height: 3rem !important;
 		border-radius: 3rem !important;
@@ -276,7 +286,7 @@
 
 
 
-		<main>
+	<main>
 		
 		<div class="box " id="one">
 			<div class="inside">
@@ -439,14 +449,19 @@
 		
 	
 
-	function initBubbleBar() {
+	function initBubbleBar(methode) {
+		if (!methode) {
+			methode = "click";
+		}
+
 		document.addEventListener("scroll", activeChecker, false);
+		window.scrollTo(0,1);
 
 		const inserts = document.querySelectorAll('.menucapsule');
 		console.info("initBubbleBar");
 
 		for (const insert of inserts) {
-			insert.addEventListener("click", menuScroll, false);
+			insert.addEventListener(methode, menuScroll, false);
 
 		}
 	}
@@ -466,7 +481,7 @@
 		const inserts = document.querySelectorAll('.menucapsule');
 
 		for (const insert of inserts) {
-			let crr = checkVisible(document.getElementById(insert.dataset.target), 100);
+			let crr = checkVisible(document.getElementById(insert.dataset.target), 200);
 
 			if (crr) {
 				insert.classList.add("active");

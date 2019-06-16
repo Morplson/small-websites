@@ -25,12 +25,15 @@
 		
 	
 
-	function initEffectHandler() {
+	function initEffectHandler(methode) {
+		if (!methode) {
+			methode = "mouseenter";
+		}
 		const inserts = document.querySelectorAll('.effect');
 		console.info("init");
 
 		for (const insert of inserts) {
-  				insert.addEventListener("mouseenter", waves3dEffect, false);
+  				insert.addEventListener(methode, waves3dEffect, false);
 		}
 	}
 

@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+	<style type="text/css">
+		@import url('https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900&display=swap');
+
+		*{
+			font-size: 14pt;
+
+			font-family: 'Raleway', sans-serif; 
+			scroll-behavior: smooth;
+		}
+
+		@media (min-width: 15rem) and ( max-width: 25rem){
+			*{
+				font-size: 12pt;
+			}
+		}
+
+		@media (max-width: 15rem){
+			*{
+				font-size: 11pt;
+			}
+		}
+
+
+		body{
+			font-weight: 300; 
+			x-overflow: hidden;
+			padding: 0;
+			margin: 0;
+		}
+
+		main{
+			z-index: 1;
+			margin: 0.25rem 3.5rem;
+			display: flex;
+
+			flex-wrap: wrap;
+			flex-direction: row;
+			justify-content: space-evenly;
+			align-items: stretch;
+			align-content: space-around;
+
+		}
+
+
+		.box{
+			text-align: center;
+			padding: 1rem;
+			float: left;
+
+			box-sizing: border-box;
+		}
+
+		.box>.inside{
+			box-sizing: content-box;
+
+			padding: 1rem 0;
+		}
+
+		@media only screen and (min-width: 15rem) and ( max-width: 25rem){
+
+			.box.s2{
+				width: 50%;
+			}
+
+			.box.s3{
+				width: 33.3%;
+			}
+		}
+
+		@media only screen and (min-width: 25rem){
+
+			.box.b2{
+				width: 50%;
+			}
+
+			.box.b3{
+				width: 33.3%;
+			}
+
+			.box.b4{
+				width: 25%;
+			}
+
+			.box.b5{
+				width: 20%;
+			}
+		}
+
+		#dummyContainer, #activeContainer{
+			height: 0;
+			overflow: hidden;
+		}
+
+
+		h1,.h1{
+			font-weight: 400;
+			font-size: 3rem;
+			margin: 1rem 0 0.5rem 0;
+		}
+
+
+		h2,.h2{
+			font-weight: 300;
+			font-size: 2.25rem;
+			margin: 1rem 0 0.5rem 0;
+		}
+
+		p,.p{
+			margin: 0.25rem 0 0.5rem 0;
+		}
+
+		img{
+			max-width:100%;
+			height: auto;
+			max-height: 25rem;
+		}
+
+		picture{
+			width: 100%;
+			float: left;
+		}
+
+		picture > img{
+			object-fit: cover;
+			min-height: 15em;
+		}
+
+	</style>
+
+	<style type="text/css">
+		.sidemenu{
+			position: fixed;
+			top:0;
+			right: 0;
+		}
+
+		.overlay{
+			z-index: -100;
+			height: 100%;
+			width: 100%;
+			position: fixed;
+			top: 0;
+			left: 0;
+
+			background-color: black;
+			
+			transition: opacity 0.6s;
+			opacity: 0;
+
+			display: none;
+		}
+
+		.moreinfo{
+			z-index: 20;
+			height: 100%;
+			position: fixed;
+			right:0;
+			background-color: white;
+
+			box-shadow: 1rem 0 1rem 1rem #999999;
+		}
+
+		.itembar{
+			float: left;
+			height: 100%;
+
+			-webkit-user-select: none; /* Safari */        
+			-moz-user-select: none; /* Firefox */
+			-ms-user-select: none; /* IE10+/Edge */
+			user-select: none; /* Standard */
+		}
+
+		.itembarmodul{
+			margin: 0.5rem 0.5rem 0 0.5rem;
+			height: 3rem;
+			overflow: hidden;
+			text-align: center;
+			transition: background-color 0.6s;
+		}
+
+		.itembarmodul div{
+			display: inline-block;
+		}
+
+		.itembarmodul:hover{
+			background-color: #f2f2f2;
+		}
+
+		.itembartext{
+			float: left;
+			padding: 1rem 0;
+			font-size: 1rem;
+
+			width:0;
+
+			transition: width 0.6s ease, padding 0.6s ease
+		}
+
+		.itembar:hover .itembartext{
+			width: 6rem;
+			padding: 1rem;
+		}
+
+		.itembaricon{
+			float: left;
+			width: 3rem;
+			height: 3rem;
+		}
+
+		i.si{
+			margin-top: 0.5rem; 
+			font-size: 2rem;
+		}
+
+		i.cl{
+			font-size: 3rem;
+		}
+
+		
+		.sidecontainer{
+			z-index: inherit;
+			float:left;
+			
+			height: 100%;
+			width: 0;
+			
+			transition: width 0.6s ease-out;
+
+			top: 0;
+			
+		}
+
+		.sidecontainer>div{
+			height: 100%;
+			width: 26rem;
+			overflow: scroll;
+			overflow-x: hidden;
+			display: none;
+			-ms-overflow-style: none;
+			scrollbar-width: none;
+		}
+
+		.sidecontainer>div::-webkit-scrollbar { 
+			display: none;
+		}
+
+		.closeside{
+			float: right;
+			width: 3rem;
+			height: 3rem;
+			right: 0.5rem;
+			top: 0.5rem;
+			transition: opacity 0.6s;
+			opacity: 0;
+			display: none;
+			position: fixed;
+			text-align: center;
+		}
+	</style>
+
+
+</head>
+<body>
+
+	<div class="sidemenu">
+		<div class="overlay" id="overlay"></div>
+
+		<div class="moreinfo">
+			<div class="itembar" id="itembar">
+
+				<div class="itembarmodul" id="info" >
+					<div class="itembaricon"><i class="si fas fa-shopping-basket"></i></div>
+					<div class="itembartext">Warenkorb</div>
+				</div>
+				<div class="itembarmodul" id="profile" >
+					<div class="itembaricon"><i class="si fas fa-user"></i></div>
+					<div class="itembartext">Profil</div>
+				</div>
+				<div class="itembarmodul" id="playlist">
+					<div class="itembaricon"><i class="si fas fa-heart"></i></div>
+					<div class="itembartext">Wunschliste</div>
+				</div>
+				<div class="itembarmodul" id="upload">
+					<div class="itembaricon"><i class="si fas fa-upload"></i></div>
+					<div class="itembartext">Hochladen</div>
+				</div>
+			</div>
+			<div class="sidecontainer" id="sidecontainer">
+				<div class="sideinfo" id="sideinfo"></div>
+				<div class="sideprofile" id="sideprofile"></div>
+				<div class="sideconfig" id="sideconfig"></div>
+				<div class="sideupload" id="sideupload"></div>
+			
+			</div>
+			<div class="closeside" id="closeside"><i class="cl fas fa-times"></i></div>
+		</div>
+	</div>
+
+	<main>
+		
+		<div class="box ">
+			<div class="inside">
+				<h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h1>
+				<h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h2>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. 
+				</p>
+			</div>
+		</div>
+
+
+		<div class="box b2 s2">
+			<div class="inside">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. 
+				</p>
+				<picture>
+					<img src="https://picsum.photos/400/300/">
+				</picture>
+				
+			</div>
+		</div>
+
+		<div class="box b2 s2">
+			<div class="inside">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. 
+				</p>
+			
+				<picture class="effect">
+					<img src="https://picsum.photos/400/200/">
+				</picture>
+			</div>
+			
+		</div>
+
+
+		<div class="box b3 s3">
+			<div class="inside">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. 
+				</p>
+			</div> 
+		</div>
+
+		<div class="box b3 s3 ">
+			<div class="inside">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. 
+				</p>
+			</div> 
+		</div>
+
+		<div class="box b3 s3">
+			<div class="inside">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. 
+				</p>
+			</div> 
+		</div>
+
+
+		<div class="box b4">
+			<div class="inside">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. 
+				</p>
+			</div>  
+		</div>
+
+		<div class="box b4">
+			<div class="inside">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. 
+				</p>
+			</div> 
+		</div>
+
+		<div class="box b4">
+			<div class="inside">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. 
+				</p>
+			</div> 
+		</div>
+
+		<div class="box b4">
+			<div class="inside">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. 
+				</p>
+			</div> 
+		</div>
+
+
+		<div class="box b5">
+			<div class="inside">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. 
+				</p>
+			</div> 
+		</div>
+
+		<div class="box b5">
+			<div class="inside">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. 
+				</p>
+			</div> 
+		</div>
+
+		<div class="box b5">
+			<div class="inside">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. 
+				</p>
+			</div> 
+		</div>
+
+		<div class="box b5">
+			<div class="inside">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. 
+				</p>
+			</div> 
+		</div>
+
+		<div class="box b5">
+			<div class="inside">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. 
+				</p>
+			</div> 
+		</div>
+
+	</main>
+
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+	document.getElementById("info").addEventListener("click", animationTrigger, false);
+	document.getElementById("profile").addEventListener("click", animationTrigger, false);
+	document.getElementById("playlist").addEventListener("click", animationTrigger, false);
+	document.getElementById("upload").addEventListener("click", animationTrigger, false);
+	document.getElementById("overlay").addEventListener("click", animationTrigger, false);
+	document.getElementById("closeside").addEventListener("click", animationTrigger, false);
+
+	function animationTrigger(e){
+		e.preventDefault();	
+			switch(e.currentTarget.id){
+				case "info":
+					
+					var url = "korb/";
+					var body = JSON.stringify({});
+					
+					if(document.getElementById("sideinfo").style.display != "block"){
+							document.getElementById("sideupload").style.display = "none";
+							document.getElementById("sideconfig").style.display = "none";
+							document.getElementById("sideprofile").style.display = "none";
+
+							var destination = "sideinfo"; 
+							sideLoader(url, body, destination);
+							requestkorb("korb");
+					}
+
+	
+					break;
+				case "profile":
+					var url = "profile/";
+					var body = JSON.stringify({});
+					
+					if(document.getElementById("sideprofile").style.display != "block"){
+							document.getElementById("sideinfo").style.display = "none";
+							document.getElementById("sideupload").style.display = "none";
+							document.getElementById("sideconfig").style.display = "none";
+
+							var destination = "sideprofile"; 
+							sideLoader(url, body, destination);
+					}
+					break;
+				case "playlist":
+					var url = "wunschliste/";
+					var body = JSON.stringify({});
+	
+					if(document.getElementById("sideconfig").style.display != "block"){
+							document.getElementById("sideprofile").style.display = "none";
+							document.getElementById("sideinfo").style.display = "none";
+							document.getElementById("sideupload").style.display = "none";
+
+							var destination = "sideconfig"; 
+							sideLoader(url, body, destination);
+					}
+					break;
+				case "upload":
+					var url = "upload/";
+					var body = JSON.stringify({});
+	
+					if(document.getElementById("sideupload").style.display != "block"){
+							document.getElementById("sideconfig").style.display = "none";
+							document.getElementById("sideprofile").style.display = "none";
+							document.getElementById("sideinfo").style.display = "none";
+
+							var destination = "sideupload"; 
+							sideLoader(url, body, destination);
+					}
+					break;
+				case "overlay": case "closeside":
+					document.getElementById("sidecontainer").style.width = "0";
+					document.getElementById("overlay").style.opacity = "0";
+					document.getElementById("closeside").style.opacity = "0";
+
+					setTimeout(()=>{
+						document.getElementById("overlay").style.zIndex = "-10";
+						document.getElementById("overlay").style.display = "none";
+						document.getElementById("closeside").style.display = "none";
+
+						document.getElementById("sideconfig").style.display = "none";
+						document.getElementById("sideprofile").style.display = "none";
+						document.getElementById("sideinfo").style.display = "none";
+						document.getElementById("sideupload").style.display = "none";
+					}, 666);
+
+					
+					break;
+				default:
+					break;
+	
+			}
+	}
+
+	function sideLoader(url, body, destination){
+			document.getElementById("sidecontainer").style.width = "26rem";
+			document.getElementById("overlay").style.display = "block";
+			
+			
+			document.getElementById("closeside").style.display = "block";
+			document.getElementById("closeside").style.opacity = "1";
+			document.getElementById("overlay").style.opacity = "0.25";
+			document.getElementById("overlay").style.zIndex = "19";
+			
+
+			fetch(url, {
+				method: 'post',
+				headers: {
+					"Content-type": "text/html"
+				},
+				body: body
+			}).then(function (response) {
+				return response.text();
+			}).then(function (data) {
+				//console.log(data);
+				document.getElementById(destination).style.display = "block";
+				document.getElementById(destination).innerHTML = ""+data;
+	
+			}).catch(function (error) {
+				console.log('Request failed', error);
+			});
+		
+
+	}
+});
+</script>
+
+<div height="0px" id="activeContainer"></div>
+
+<div height="0px" id="dummyContainer">
+</div>
+
+</body>
+
+</html>
