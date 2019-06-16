@@ -157,6 +157,8 @@
 
 		z-index: 100;
 
+		font-size: 1.25rem;
+
 		height: 2.5rem;
 		line-height: 2.5rem;
 		border-radius: 2.5rem;
@@ -164,7 +166,7 @@
 		margin-left: -2.5rem; 
 
 		white-space: nowrap;
-
+		transition: all .6s ease;
 
 
 		cursor: pointer;
@@ -208,6 +210,16 @@
 		white-space: nowrap;
 	}
 
+	aside.bubblemenu > .menucapsule.active{
+		font-size: 2.5rem !important;
+		height: 3rem !important;
+		line-height: 3rem !important;
+		border-radius: 3rem !important;
+		padding-left: 3rem !important;
+		margin-left: -3rem !important;
+		
+	}
+
 
 
 </style>
@@ -219,43 +231,44 @@
 
 	<aside class="bubblemenu">
 		
-		<div data-target="" class="menucapsule">
+		<div data-target="one" class="menucapsule">
 			<div class="menutext">
 				"Tag text"
 			</div>
 			<div class="menuicon">
-							</div>
-		</div>
-		<div data-target="" class="menucapsule">
-			<div class="menutext">
-				"Tag text"
-			</div>
-			<div class="menuicon">
-				"icon"
+				1
 			</div>
 		</div>
-		<div data-target="" class="menucapsule">
+		<div data-target="two" class="menucapsule">
 			<div class="menutext">
 				"Tag text"
 			</div>
 			<div class="menuicon">
-				"icon"
+				2
 			</div>
 		</div>
-		<div data-target="" class="menucapsule">
+		<div data-target="three" class="menucapsule">
 			<div class="menutext">
 				"Tag text"
 			</div>
 			<div class="menuicon">
-				"icon"
+				3
 			</div>
 		</div>
-		<div data-target="" class="menucapsule">
+		<div data-target="four" class="menucapsule">
 			<div class="menutext">
 				"Tag text"
 			</div>
 			<div class="menuicon">
-				"icon"
+				4
+			</div>
+		</div>
+		<div data-target="five" class="menucapsule">
+			<div class="menutext">
+				"Tag text"
+			</div>
+			<div class="menuicon">
+				5
 			</div>
 		</div>
 	</aside>
@@ -265,7 +278,7 @@
 
 		<main>
 		
-		<div class="box ">
+		<div class="box " id="one">
 			<div class="inside">
 				<h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h1>
 				<h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h2>
@@ -277,7 +290,7 @@
 		</div>
 
 
-		<div class="box b2 s2">
+		<div class="box b2 s2" id="two">
 			<div class="inside">
 				<p>
 					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -305,7 +318,7 @@
 		</div>
 
 
-		<div class="box b3 s3">
+		<div class="box b3 s3" id="three">
 			<div class="inside">
 				<p>
 					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -333,7 +346,7 @@
 		</div>
 
 
-		<div class="box b4">
+		<div class="box b4" id="four">
 			<div class="inside">
 				<p>
 					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -370,7 +383,7 @@
 		</div>
 
 
-		<div class="box b5">
+		<div class="box b5" id="five">
 			<div class="inside">
 				<p>
 					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -418,6 +431,68 @@
 	</main>
 
 
+
+<script type="text/javascript">
+	window.addEventListener('load', function() {
+    	initBubbleBar();
+	});
+		
+	
+
+	function initBubbleBar() {
+		document.addEventListener("scroll", activeChecker, false);
+
+		const inserts = document.querySelectorAll('.menucapsule');
+		console.info("initBubbleBar");
+
+		for (const insert of inserts) {
+			insert.addEventListener("click", menuScroll, false);
+
+		}
+	}
+
+	function menuScroll(event) {
+		let target = event.currentTarget.dataset.target;
+
+		document.getElementById(target).scrollIntoView();
+	}
+
+
+
+
+
+	function activeChecker() {
+
+		const inserts = document.querySelectorAll('.menucapsule');
+
+		for (const insert of inserts) {
+			let crr = checkVisible(document.getElementById(insert.dataset.target), 100);
+
+			if (crr) {
+				insert.classList.add("active");
+			}else{
+				insert.classList.remove("active");
+			}
+		}
+
+		
+
+	};
+
+
+	function checkVisible(elm, threshold, mode) {
+		threshold = threshold || 0;
+		mode = mode || 'visible';
+
+		var rect = elm.getBoundingClientRect();
+		var viewHeight = Math.max(document.documentElement.clientHeight, window.innerHeight);
+		var above = rect.bottom - threshold < 0;
+		var below = rect.top - viewHeight + threshold >= 0;
+
+		return mode === 'above' ? above : (mode === 'below' ? below : !above && !below);
+	}
+
+</script>
 
 
 
