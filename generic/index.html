@@ -49,7 +49,6 @@
 
 
 		.box{
-			text-align: center;
 			padding: 1rem;
 			float: left;
 
@@ -102,6 +101,7 @@
 			font-weight: 400;
 			font-size: 3rem;
 			margin: 1rem 0 0.5rem 0;
+			text-align: center;
 		}
 
 
@@ -109,10 +109,13 @@
 			font-weight: 300;
 			font-size: 2.25rem;
 			margin: 1rem 0 0.5rem 0;
+			text-align: center;
 		}
 
 		p,.p{
 			margin: 0.25rem 0 0.5rem 0;
+			text-align: justify;
+			
 		}
 
 		img{
@@ -122,6 +125,7 @@
 		}
 
 		picture{
+			text-align: center;
 			width: 100%;
 			float: left;
 		}
@@ -132,9 +136,99 @@
 		}
 
 
+		/* --- INPUT --- */
+		.inputfield{
+			border: 0; 
+			padding: 0.5rem 1rem; 
+			border: 1px solid #ccc; 
+			position: relative; 
+			background: transparent;
+		}
 		
+		.inputfield ~ .focus-bg{
+			position: absolute; 
+			left: 0; 
+			top: 0; 
+			width: 0; 
+			height: 100%; 
+			background-color: transparent; 
+			transition: 0.4s; 
+			z-index: -1;
+		}
+		
+		.inputfield:focus ~ .focus-bg, .x0x342.inputfield ~ .focus-bg{
+			transition: 0.4s;
+			width: 100%;
+			background-color: #ededed;
+		}
+		
+		.inputfield ~ label{
+			position: absolute; 
+			left: 0.5rem; 
+			width: 100%; 
+			top: 0.5rem; 
+			color: #aaa; 
+			transition: 0.3s; 
+			z-index: -1; 
+		}
+		
+		.inputfield:focus ~ label, .inputfield:not(:placeholder-shown) ~ label, .x0x342.effect-22 ~ label{
+			top: -1rem;
+			left: 0;
+			font-size: 0.75rem; 
+			color: #333; 
+			transition: 0.3s;
+		}
+		
+		input[type="text"], input[type="number"], input[type="password"], input[type="email"], input[type="tel"], textarea{
+			color: #333;
+			width: 100%; 
+			box-sizing: border-box; 
+			border-radius:0.12rem;
+			transition: 0.3s ease;
+		}
+		
+		.input textarea{
+			resize: none;
+		}
+
+		input[type="text"]:invalid, input[type="number"]:invalid, input[type="password"]:invalid, input[type="email"]:invalid, input[type="tel"]:invalid, textarea:invalid{
+			background-color: #edaaaa;
+		}
+
+		
+		.input :focus, .input :invalid, .input :valid{outline: none;}
+		
+		.input{
+			float: left;
+			text-align: left;
+			text-align-last: left;
+			width: 100%;
+			margin: 1rem 0 0.25rem 0;
+			position: relative;
+		}
 
 
+		.submitbutton{
+			background-color: white;
+			cursor: pointer;
+			position: relative;
+			float: left;
+			width: 100%;
+			margin: 1rem 0 0.25rem 0;
+ 			padding:0.35rem 1.2rem;
+			border: 1px solid #ccc;
+			border-radius:0.12rem;
+			text-decoration:none;
+			color:#aaa;
+			text-align:center;
+			transition: all 0.2s;
+		}
+
+		.submitbutton:hover{
+			color: black;
+			background-color:#ededed;
+		}
 
 
 	</style>
@@ -185,28 +279,63 @@
 
 		<div class="box b3 s3">
 			<div class="inside">
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. 
-				</p>
+				<div class="input">
+					<input class="inputfield" type="text" id="text" name="text" placeholder="">
+					<label>Text</label>
+					<span class="focus-bg"></span>
+				</div>
+
 			</div> 
 		</div>
 
 		<div class="box b3 s3 ">
 			<div class="inside">
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. 
-				</p>
+				<div class="input">
+					<input class="inputfield" id="number" type="number" name="number" placeholder="">
+					<label>Number</label>
+					<span class="focus-bg"></span>
+				</div>
 			</div> 
 		</div>
 
 		<div class="box b3 s3">
 			<div class="inside">
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. 
-				</p>
+				<div class="input">
+					<input class="inputfield" id="password" type="password" name="password" placeholder="">
+					<label>Password</label>
+					<span class="focus-bg"></span>
+				</div>
+			</div> 
+		</div>
+
+
+		<div class="box b3">
+			<div class="inside">
+				<div class="input">
+					<input class="inputfield" id="email" type="email" name="email" placeholder="">
+					<label>E-Mail</label>
+					<span class="focus-bg"></span>
+				</div>
+			</div>  
+		</div>
+
+		<div class="box b3">
+			<div class="inside">
+				<div class="input">
+					<textarea class="inputfield" id="textarea" name="textarea" placeholder=""></textarea>
+					<label>Textarea</label>
+					<span class="focus-bg"></span>
+				</div>
+			</div> 
+		</div>
+
+		<div class="box b3">
+			<div class="inside">
+				<div class="input">
+					<input class="inputfield" id="tel" type="tel" name="tel" placeholder="" pattern="\+(9[976]\d|8[987530]\d|6[987]\d|5[90]\d|42\d|3[875]\d|2[98654321]\d|9[8543210]|8[6421]|6[6543210]|5[87654321]|4[987654310]|3[9643210]|2[70]|7|1)\d{1,14}$">
+					<label>Tel</label>
+					<span class="focus-bg"></span>
+				</div>
 			</div> 
 		</div>
 
@@ -217,7 +346,7 @@
 					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 					tempor incididunt ut labore et dolore magna aliqua. 
 				</p>
-			</div>  
+			</div> 
 		</div>
 
 		<div class="box b4">
