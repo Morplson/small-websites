@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Index</title>
+
+	<link rel="stylesheet" type="text/css" href="main.css">
+
+	<style type="text/css">
+		
+		@import url('https://fonts.googleapis.com/css?family=Rokkitt:300,400&display=swap');
+
+		*{
+			font-size: 14pt;
+
+			font-family: 'Rokkitt', sans-serif; 
+			scroll-behavior: smooth;
+
+			-webkit-font-smoothing: none;
+			-moz-osx-font-smoothing: none;
+		}
+
+		@media (min-width: 15rem) and ( max-width: 25rem){
+			*{
+				font-size: 12pt;
+			}
+		}
+
+		@media (max-width: 15rem){
+			*{
+				font-size: 11pt;
+			}
+		}
+
+
+		body{
+			background-color: #e35f5f;
+			color: #070707;
+		}
+
+		main{
+			
+
+		}
+
+
+		.box{
+			border-top: 0.125rem solid #eee;
+			border-left: 0.125rem solid #eee;
+			border-bottom: 0.125rem solid #070707;
+			border-right: 0.125rem solid #070707;
+			background-color: #bfbfbf;
+		}
+
+
+
+
+		/* --- INPUT --- */
+		.input{
+			background-color: #bfbfbf;
+			border-radius: 0;
+		}
+
+		.input .inputfield{
+			border-top: 0.125rem solid #808080;
+			border-left: 0.125rem solid #808080;
+			border-bottom: 0.125rem solid #dfdfdf;
+			border-right: 0.125rem solid #dfdfdf;
+			box-shadow: 1px 1px 0 0 inset #000;
+
+			border-radius: 0;
+
+		}
+		
+		.input .inputfield ~ label{
+			color: #333; 
+		}
+		
+
+		button{
+			border-top: 0.125rem solid #dfdfdf;
+			border-left: 0.125rem solid #dfdfdf;
+			border-bottom: 0.125rem solid #808080;
+			border-right: 0.125rem solid #808080;
+			box-shadow: 0.125rem 0.125rem 0 0 #000;
+
+			border-radius: 0;
+
+
+			color: #070707;
+			background-color: #bfbfbf;
+			transition: 0s;
+		}
+
+		button:hover{
+			background-color: #bfbfbf;
+		}
+
+		button:active{
+			border-top: 0.125rem solid #808080;
+			border-left: 0.125rem solid #808080;
+			border-bottom: 0.125rem solid #dfdfdf;
+			border-right: 0.125rem solid #dfdfdf;
+			box-shadow: 1px 1px 0 0 inset #000;
+		}
+
+
+		button.inactive{
+			background-color: #edaaaa;
+			color:#333;
+			cursor: not-allowed;
+
+		}
+
+		button.inactive:active{
+			border-top: 0.125rem solid #dfdfdf;
+			border-left: 0.125rem solid #dfdfdf;
+			border-bottom: 0.125rem solid #808080;
+			border-right: 0.125rem solid #808080;
+			box-shadow: 0.125rem 0.125rem 0 0 #000;
+
+			transition: 0s;
+		}
+
+
+	</style>
+</head>
+<body>
+
+	<main>
+		
+		<div class="box b1">
+			<div class="inside">
+				<h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h1>
+				<h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h2>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. 
+				</p>
+			</div>
+		</div>
+
+
+		<div class="box b2 s2">
+			<div class="inside">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. 
+				</p>
+				<picture>
+					<img src="https://picsum.photos/400/300/">
+				</picture>
+				
+			</div>
+		</div>
+
+		<div class="box b2 s2">
+			<div class="inside">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. 
+				</p>
+			
+				<picture class="effect">
+					<img src="https://picsum.photos/400/200/">
+				</picture>
+			</div>
+			
+		</div>
+
+
+		<div class="box b1">
+			<div class="inside">
+				<h2>Active inputs</h2>
+
+				<button type="submit">Button</button>
+			</div>
+		</div>
+
+		<div class="box b3 s3">
+			<div class="inside">
+				<div class="input">
+					<input class="inputfield" type="text" id="text" name="text" placeholder="">
+					<label>Text</label>
+					<span class="focus-bg"></span>
+				</div>
+
+			</div> 
+		</div>
+
+		<div class="box b3 s3 ">
+			<div class="inside">
+				<div class="input">
+					<input class="inputfield" id="number" type="number" name="number" placeholder="">
+					<label>Number</label>
+					<span class="focus-bg"></span>
+				</div>
+			</div> 
+		</div>
+
+		<div class="box b3 s3">
+			<div class="inside">
+				<div class="input">
+					<input class="inputfield" id="password" type="password" name="password" placeholder="">
+					<label>Password</label>
+					<span class="focus-bg"></span>
+				</div>
+			</div> 
+		</div>
+
+
+		<div class="box b3">
+			<div class="inside">
+				<div class="input">
+					<input class="inputfield" id="email" type="email" name="email" placeholder="">
+					<label>E-Mail</label>
+					<span class="focus-bg"></span>
+				</div>
+			</div>  
+		</div>
+
+		<div class="box b3">
+			<div class="inside">
+				<div class="input">
+					<textarea class="inputfield" id="textarea" name="textarea" placeholder=""></textarea>
+					<label>Textarea</label>
+					<span class="focus-bg"></span>
+				</div>
+			</div> 
+		</div>
+
+		<div class="box b3">
+			<div class="inside">
+				<div class="input">
+					<input class="inputfield" id="tel" type="tel" name="tel" placeholder="" pattern="\+(9[976]\d|8[987530]\d|6[987]\d|5[90]\d|42\d|3[875]\d|2[98654321]\d|9[8543210]|8[6421]|6[6543210]|5[87654321]|4[987654310]|3[9643210]|2[70]|7|1)\d{1,14}$">
+					<label>Tel</label>
+					<span class="focus-bg"></span>
+				</div>
+			</div> 
+		</div>
+
+
+
+		<div class="box b1">
+			<div class="inside">
+				<h2>Inactive inputs</h2>
+
+				<button class="inactive" type="submit">Button</button>
+			</div>
+		</div>
+
+		<div class="box b3 s3">
+			<div class="inside">
+				<div class="input inactive">
+					<input class="inputfield" type="text" id="text" name="text" placeholder="" value="Text" readonly="readonly">
+					<label>Text</label>
+				</div>
+
+			</div> 
+		</div>
+
+		<div class="box b3 s3 ">
+			<div class="inside">
+				<div class="input inactive">
+					<input class="inputfield" id="number" type="number" name="number" placeholder="" value="Number" readonly="readonly">
+					<label>Number</label>
+				</div>
+			</div> 
+		</div>
+
+		<div class="box b3 s3">
+			<div class="inside">
+				<div class="input inactive">
+					<input class="inputfield" id="password" type="password" name="password" placeholder="" value="Password" readonly="readonly">
+					<label>Password</label>
+				</div>
+			</div> 
+		</div>
+
+
+		<div class="box b3">
+			<div class="inside">
+				<div class="input inactive">
+					<input class="inputfield" id="email" type="email" name="email" placeholder="" value="E-Mail" readonly="readonly">
+					<label>E-Mail</label>
+				</div>
+			</div>  
+		</div>
+
+		<div class="box b3">
+			<div class="inside">
+				<div class="input inactive">
+					<textarea class="inputfield" id="textarea" name="textarea" placeholder="" readonly="readonly">Textarea</textarea>
+					<label>Textarea</label>
+				</div>
+			</div> 
+		</div>
+
+		<div class="box b3">
+			<div class="inside">
+				<div class="input inactive">
+					<input class="inputfield" id="tel" type="tel" name="tel" placeholder="" pattern="\+(9[976]\d|8[987530]\d|6[987]\d|5[90]\d|42\d|3[875]\d|2[98654321]\d|9[8543210]|8[6421]|6[6543210]|5[87654321]|4[987654310]|3[9643210]|2[70]|7|1)\d{1,14}$" value="Tel" readonly="readonly" >
+					<label>Tel</label>
+				</div>
+			</div> 
+		</div>
+
+
+
+
+
+
+
+
+		<div class="box b4">
+			<div class="inside">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. 
+				</p>
+			</div> 
+		</div>
+
+		<div class="box b4">
+			<div class="inside">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. 
+				</p>
+			</div> 
+		</div>
+
+		<div class="box b4">
+			<div class="inside">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. 
+				</p>
+			</div> 
+		</div>
+
+		<div class="box b4">
+			<div class="inside">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. 
+				</p>
+			</div> 
+		</div>
+
+
+		<div class="box b5">
+			<div class="inside">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. 
+				</p>
+			</div> 
+		</div>
+
+		<div class="box b5">
+			<div class="inside">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. 
+				</p>
+			</div> 
+		</div>
+
+		<div class="box b5">
+			<div class="inside">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. 
+				</p>
+			</div> 
+		</div>
+
+		<div class="box b5">
+			<div class="inside">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. 
+				</p>
+			</div> 
+		</div>
+
+		<div class="box b5">
+			<div class="inside">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. 
+				</p>
+			</div> 
+		</div>
+
+	</main>
+
+
+
+<div height="0px" id="activeContainer"></div>
+
+<div height="0px" id="dummyContainer">
+</div>
+
+</body>
+
+</html>

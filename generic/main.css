@@ -137,12 +137,28 @@
 
 
 		/* --- INPUT --- */
+		.input{
+			background-color: white;
+			border-radius:0.125rem;
+			float: left;
+			text-align: left;
+			text-align-last: left;
+			width: 100%;
+			margin: 1rem 0 0.25rem 0;
+			position: relative;
+		}
+
 		.input .inputfield{
 			border: 0; 
 			padding: 0.5rem 1rem; 
 			border: 1px solid #ccc; 
 			position: relative; 
 			background: transparent;
+			z-index: 2;
+
+			border-radius:0.125rem;
+
+
 		}
 		
 		.input .inputfield ~ .focus-bg{
@@ -153,7 +169,7 @@
 			height: 100%; 
 			background-color: transparent; 
 			transition: 0.4s; 
-			z-index: -1;
+			z-index: 1;
 		}
 		
 		.input .inputfield:focus ~ .focus-bg{
@@ -169,7 +185,7 @@
 			top: 0.5rem; 
 			color: #aaa; 
 			transition: 0.3s; 
-			z-index: -1; 
+			z-index: 1; 
 		}
 		
 		.input .inputfield:focus ~ label,
@@ -190,12 +206,12 @@
 			color: #333;
 			width: 100%; 
 			box-sizing: border-box; 
-			border-radius:0.12rem;
 			transition: 0.3s ease;
 		}
 		
 		.input textarea{
 			resize: none;
+			margin: 0;
 		}
 
 		.input input[type="text"]:invalid,
@@ -214,14 +230,6 @@
 			outline: none;
 		}
 		
-		.input{
-			float: left;
-			text-align: left;
-			text-align-last: left;
-			width: 100%;
-			margin: 1rem 0 0.25rem 0;
-			position: relative;
-		}
 
 
 		button{
