@@ -1,0 +1,312 @@
+
+		@import url('https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900&display=swap');
+
+		*{
+			font-size: 14pt;
+
+			font-family: 'Raleway', sans-serif; 
+			scroll-behavior: smooth;
+		}
+
+		@media (min-width: 15rem) and ( max-width: 25rem){
+			*{
+				font-size: 12pt;
+			}
+		}
+
+		@media (max-width: 15rem){
+			*{
+				font-size: 11pt;
+			}
+		}
+
+
+		body{
+			font-weight: 300; 
+			x-overflow: hidden;
+			padding: 0;
+			margin: 0;
+		}
+
+		main{
+			z-index: 1;
+			margin: 0.25rem 3.5rem;
+			display: flex;
+
+			flex-wrap: wrap;
+			flex-direction: row;
+			justify-content: space-evenly;
+			align-items: stretch;
+			align-content: space-around;
+
+		}
+
+
+		.box{
+			padding: 1rem;
+			float: left;
+
+			box-sizing: border-box;
+		}
+
+		.box>.inside{
+			box-sizing: content-box;
+
+			padding: 1rem 0;
+		}
+
+		@media only screen and (min-width: 15rem) and ( max-width: 25rem){
+			.box.s1{
+				width: 100%;
+			}
+
+			.box.s2{
+				width: 50%;
+			}
+
+			.box.s3{
+				width: 33.3%;
+			}
+		}
+
+		@media only screen and (min-width: 25rem){
+			.box.b1{
+				width: 100%;
+			}
+
+			.box.b2{
+				width: 50%;
+			}
+
+			.box.b3{
+				width: 33.3%;
+			}
+
+			.box.b4{
+				width: 25%;
+			}
+
+			.box.b5{
+				width: 20%;
+			}
+		}
+
+		#dummyContainer, #activeContainer{
+			height: 0;
+			overflow: hidden;
+		}
+
+
+		h1,.h1{
+			font-weight: 400;
+			font-size: 3rem;
+			margin: 1rem 0 0.5rem 0;
+			text-align: center;
+		}
+
+
+		h2,.h2{
+			font-weight: 300;
+			font-size: 2.25rem;
+			margin: 1rem 0 0.5rem 0;
+			text-align: center;
+		}
+
+		p,.p{
+			margin: 0.25rem 0 0.5rem 0;
+			text-align: justify;
+			
+		}
+
+		img{
+			max-width:100%;
+			height: auto;
+			max-height: 25rem;
+		}
+
+		picture{
+			text-align: center;
+			width: 100%;
+			float: left;
+		}
+
+		picture > img{
+			object-fit: cover;
+			min-height: 15em;
+		}
+
+
+		/* --- INPUT --- */
+		.input .inputfield{
+			border: 0; 
+			padding: 0.5rem 1rem; 
+			border: 1px solid #ccc; 
+			position: relative; 
+			background: transparent;
+		}
+		
+		.input .inputfield ~ .focus-bg{
+			position: absolute; 
+			left: 0; 
+			top: 0; 
+			width: 0; 
+			height: 100%; 
+			background-color: transparent; 
+			transition: 0.4s; 
+			z-index: -1;
+		}
+		
+		.input .inputfield:focus ~ .focus-bg{
+			transition: 0.4s;
+			width: 100%;
+			background-color: #ededed;
+		}
+		
+		.input .inputfield ~ label{
+			position: absolute; 
+			left: 0.5rem; 
+			width: 100%; 
+			top: 0.5rem; 
+			color: #aaa; 
+			transition: 0.3s; 
+			z-index: -1; 
+		}
+		
+		.input .inputfield:focus ~ label,
+		.input .inputfield:not(:placeholder-shown) ~ label, .input .effect-22 ~ label{
+			top: -1rem;
+			left: 0;
+			font-size: 0.75rem; 
+			color: #333; 
+			transition: 0.3s;
+		}
+		
+		.input input[type="text"],
+		.input input[type="number"],
+		.input input[type="password"],
+		.input input[type="email"],
+		.input input[type="tel"],
+		.input textarea{
+			color: #333;
+			width: 100%; 
+			box-sizing: border-box; 
+			border-radius:0.12rem;
+			transition: 0.3s ease;
+		}
+		
+		.input textarea{
+			resize: none;
+		}
+
+		.input input[type="text"]:invalid,
+		.input input[type="number"]:invalid,
+		.input input[type="password"]:invalid,
+		.input input[type="email"]:invalid,
+		.input input[type="tel"]:invalid,
+		.input textarea:invalid{
+			background-color: #edaaaa;
+		}
+
+		
+		.input :focus,
+		.input :invalid, 
+		.input :valid{
+			outline: none;
+		}
+		
+		.input{
+			float: left;
+			text-align: left;
+			text-align-last: left;
+			width: 100%;
+			margin: 1rem 0 0.25rem 0;
+			position: relative;
+		}
+
+
+		button{
+			position: relative;
+			padding: 0.5rem 1rem; 
+			margin: 1rem 0 0.25rem 0;
+			border: 1px solid #ccc;
+			width: 100%;
+			box-sizing: border-box;
+
+			border-radius:0.12rem;
+			text-align:center;
+
+			cursor: pointer;
+			text-decoration:none;
+			background-color: white;
+			color:#aaa;
+
+			transition: all 0.2s;
+		}
+
+		button:hover{
+			color: black;
+			background-color:#ededed;
+		}
+
+
+
+		.input.inactive .inputfield{
+			border: 0; 
+			padding: 0.5rem 1rem; 
+			border: 1px solid #ccc; 
+			position: relative; 
+			background: transparent;
+		}
+		
+		
+		.input.inactive .inputfield ~ label{
+			text-align: left;
+			text-align-last: left;
+			top: -1rem;
+			left: 0;
+			font-size: 0.75rem; 
+			color: #333; 
+		}
+		
+		
+		.input.inactive input[type="text"],
+		.input.inactive textarea{
+			cursor: default;
+		}
+
+		.input.inactive input[type="number"],
+		.input.inactive input[type="password"],
+		.input.inactive input[type="email"],
+		.input.inactive input[type="tel"]{
+			background-color: #edaaaa;
+			color:#333;
+			cursor: not-allowed;
+			-webkit-user-select: all;
+			-moz-user-select: all;
+			-ms-user-select: all;
+			user-select: all;
+		}
+
+
+		
+		.input.inactive :focus,
+		.input.inactive :invalid, 
+		.input.inactive :valid{
+			outline: none;
+		}
+		
+		.input.inactive{
+			text-align: center;
+			text-align-last: center;
+
+		}
+
+
+		button.inactive{
+			background-color: #edaaaa;
+			color:#333;
+			cursor: not-allowed;
+
+		}
+
+

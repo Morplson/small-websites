@@ -3,141 +3,7 @@
 <head>
 	<title>topmenu</title>
 
-	<style type="text/css">
-
-		@import url('https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900&display=swap');
-
-		*{
-			font-size: 14pt;
-
-			font-family: 'Raleway', sans-serif; 
-			scroll-behavior: smooth;
-		}
-
-		@media (min-width: 15rem) and ( max-width: 25rem){
-			*{
-				font-size: 12pt;
-			}
-		}
-
-		@media (max-width: 15rem){
-			*{
-				font-size: 11pt;
-			}
-		}
-
-
-		body{
-			font-weight: 300; 
-			x-overflow: hidden;
-			padding: 0;
-			margin: 0;
-		}
-
-		main{
-			margin: 0.25rem 3.5rem;
-			
-			display: flex;
-
-			flex-wrap: wrap;
-			flex-direction: row;
-			justify-content: space-evenly;
-			align-items: stretch;
-			align-content: space-around;
-
-		}
-
-
-		.box{
-			text-align: center;
-			padding: 1rem;
-			float: left;
-
-			box-sizing: border-box;
-		}
-
-		.box>.inside{
-			box-sizing: content-box;
-
-			padding: 1rem 0;
-		}
-
-		@media only screen and (min-width: 15rem) and ( max-width: 25rem){
-
-			.box.s2{
-				width: 50%;
-			}
-
-			.box.s3{
-				width: 33.3%;
-			}
-		}
-
-		@media only screen and (min-width: 25rem){
-
-			.box.b2{
-				width: 50%;
-			}
-
-			.box.b3{
-				width: 33.3%;
-			}
-
-			.box.b4{
-				width: 25%;
-			}
-
-			.box.b5{
-				width: 20%;
-			}
-		}
-
-		#dummyContainer, #activeContainer{
-			height: 0;
-			overflow: hidden;
-		}
-
-
-		h1,.h1{
-			font-weight: 400;
-			font-size: 3rem;
-			margin: 1rem 0 0.5rem 0;
-		}
-
-
-		h2,.h2{
-			font-weight: 300;
-			font-size: 2.25rem;
-			margin: 1rem 0 0.5rem 0;
-		}
-
-		p,.p{
-			margin: 0.25rem 0 0.5rem 0;
-		}
-
-		img{
-			max-width:100%;
-			height: auto;
-			max-height: 25rem;
-		}
-
-		picture{
-			width: 100%;
-			float: left;
-		}
-
-		picture > img{
-			object-fit: cover;
-			min-height: 15em;
-		}
-
-
-		
-
-
-
-
-	</style>
+	<link rel="stylesheet" type="text/css" href="main.css">
 
 	<style>
 	main{
@@ -164,12 +30,19 @@
 		left: 0;
 		right: 0;
 		z-index: 5;
+
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
+
 		padding-left: 3.5rem;
-		padding-right: 9rem;
+		padding-right: 3.5rem;
 		background-color: white;
 
 		height: 3rem;
 		overflow: hidden;
+
+
 	}
 
 	.header a{
@@ -181,41 +54,13 @@
 
 	}
 
-	.header .left{
-		float: left;
+	.header .item{
 		transition: background-color .6s;
-
 		padding: 0 1rem;
 		line-height: 3rem;
 	}
 
-	.header .right{;
-		float: right;
-		transition: background-color .6s;
-
-		padding: 0 1rem;
-		line-height: 3rem;
-	}
-
-
-	.mobilecontainer{
-
-		background-color: white;
-		z-index: 30;
-
-		position: fixed;
-		box-sizing: content-box;
-
-	}
-	
-	.mobilecontainer>.exput{
-		transition: background-color .6s;
-		line-height: 3rem;
-		height: 3rem;
-		padding: 0 1rem;
-	}
-
-	.exput:hover, .left:hover, .right:hover{
+	.item:hover{
 		background-color: #f2f2f2
 	}
 
@@ -223,18 +68,18 @@
 </head>
 <body>
 	<div class="header">
-		<a href=""><div class="label left">Shop.com</div></a>
-		<a><div id="mobilemenu" class="mobile left"><i class="fas fa-bars"></i></div></a>
-		<a href=""><div class="desktop left">Beliebt</div></a>
-		<a href=""><div class="desktop left">Neu</div></a>
+		<div class="label item">Shop.com</div>
+		<div class="desktop item">Beliebt</div>
+		<div class="desktop item">Neu</div>
 
-		<div class="desktop" style="float: right; line-height: 3rem;">
-			<script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Support Us', '#9046b8', 'F2F1TG5Q');kofiwidget2.draw();</script>
-		</div>
-		<a href="login/"><div class="desktop right">Login</div></a>
-		<div class="desktop right">
+		<div class="desktop item">
 			<input id="search" class="search" type="text" placeholder="Search..." name="sInput">
 			<i class="fas fa-search" onclick="search()"></i>
+		</div>
+		<div class="desktop item">Login</div>
+		
+		<div class="desktop" style="float: right; line-height: 3rem;">
+			<script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Support Us', '#9046b8', 'F2F1TG5Q');kofiwidget2.draw();</script>
 		</div>
 		
 	</div>
