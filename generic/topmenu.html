@@ -69,8 +69,8 @@
 <body>
 	<div class="header">
 		<div class="label item">Shop.com</div>
-		<div class="desktop item">Beliebt</div>
-		<div class="desktop item">Neu</div>
+		<div data-target="bubblemenu.html" class="desktop item">bubble</div>
+		<div data-target="" class="desktop item">Neu</div>
 
 		<div class="desktop item">
 			<input id="search" class="search" type="text" placeholder="Search..." name="sInput">
@@ -241,7 +241,7 @@
 	</main>
 
 	<script type="text/javascript">
-		const searchinp = document.getElementById("search");
+		/*const searchinp = document.getElementById("search");
 		searchinp.addEventListener("keyup", ()=>{
 			if (event.key === "Enter") {
 				search();
@@ -257,40 +257,49 @@
 
 		function search(){
        		window.location.replace("search.php?s="+searchinp.value);
-    	}
+    	}*/
+	
+	window.addEventListener('load', function() {
+    	initTopMenu();
+	});
+		
 	
 
-		const mobilemenu = document.getElementById("mobilemenu");
-		mobilemenu.addEventListener("mouseover", function(event) {
-    		
-       		let el = document.getElementById("mobilehovercontainer");
-       		el.style.display = "block";
-       		el.style.left = mobilemenu.offsetLeft+"px";
-       		el.style.top =  mobilemenu.offsetTop+mobilemenu.offsetHeight+"px";
-
-		});
-		mobilemenu.addEventListener("mouseout", function(event) {
-    		
-       		let el = document.getElementById("mobilehovercontainer");
-       		el.style.display = "none";
-    	
-		});
+	function initTopMenu(methode) {
+		if (!methode) {
+			methode = "click";
+		}
 
 
+		const inserts = document.querySelectorAll('.item');
+		console.info("initTopMenu");
 
-		const mobilehovercontainer = document.getElementById("mobilehovercontainer");
-		mobilehovercontainer.addEventListener("mouseover", function(event) {
-    		
-       		let el = document.getElementById("mobilehovercontainer");
-       		el.style.display = "block";
-    	
-		});
-		mobilehovercontainer.addEventListener("mouseout", function(event) {
-    		
-       		let el = document.getElementById("mobilehovercontainer");
-       		el.style.display = "none";
-    	
-		});
+		for (const insert of inserts) {
+			insert.addEventListener(methode, topLink, false);
+
+		}
+	}
+
+	function topLink(event) {
+		let target = event.currentTarget.dataset.target;
+
+		if(target.indexOf('#')==0){
+			document.getElementById(target.replace('#','')).scrollIntoView();
+		}else{
+			window.location.href = target;
+		}
+
+
+		
+	}
+
+
+
+
+
+
+
+
 
 	</script>
 
