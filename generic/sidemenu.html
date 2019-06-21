@@ -149,11 +149,11 @@
 		<div class="moreinfo">
 			<div class="itembar" id="itembar">
 
-				<div class="itembarmodul" id="info" >
+				<div class="itembarmodul" data-target="index.html" id="index" >
 					<div class="itembaricon"><i class="si fas fa-shopping-basket"></i></div>
 					<div class="itembartext">Warenkorb</div>
 				</div>
-				<div class="itembarmodul" id="profile" >
+				<div class="itembarmodul" data-target="win95" id="win95" >
 					<div class="itembaricon"><i class="si fas fa-user"></i></div>
 					<div class="itembartext">Profil</div>
 				</div>
@@ -167,11 +167,6 @@
 				</div>
 			</div>
 			<div class="sidecontainer" id="sidecontainer">
-				<div class="sideinfo" id="sideinfo"></div>
-				<div class="sideprofile" id="sideprofile"></div>
-				<div class="sideconfig" id="sideconfig"></div>
-				<div class="sideupload" id="sideupload"></div>
-			
 			</div>
 			<div class="closeside" id="closeside"><i class="cl fas fa-times"></i></div>
 		</div>
@@ -332,128 +327,100 @@
 	</main>
 
 <script>
-document.addEventListener('DOMContentLoaded', function(){
-	document.getElementById("info").addEventListener("click", animationTrigger, false);
-	document.getElementById("profile").addEventListener("click", animationTrigger, false);
-	document.getElementById("playlist").addEventListener("click", animationTrigger, false);
-	document.getElementById("upload").addEventListener("click", animationTrigger, false);
-	document.getElementById("overlay").addEventListener("click", animationTrigger, false);
-	document.getElementById("closeside").addEventListener("click", animationTrigger, false);
+	document.addEventListener('DOMContentLoaded', function(){
+		initSidemenu();
+	}
 
-	function animationTrigger(e){
-		e.preventDefault();	
-			switch(e.currentTarget.id){
-				case "info":
-					
-					var url = "korb/";
-					var body = JSON.stringify({});
-					
-					if(document.getElementById("sideinfo").style.display != "block"){
-							document.getElementById("sideupload").style.display = "none";
-							document.getElementById("sideconfig").style.display = "none";
-							document.getElementById("sideprofile").style.display = "none";
 
-							var destination = "sideinfo"; 
-							sideLoader(url, body, destination);
-							requestkorb("korb");
-					}
+	function initSidemenu() {
+		const inserts = document.querySelectorAll('.itembarmodul');
+		console.info("initSidemenu");
 
-	
-					break;
-				case "profile":
-					var url = "profile/";
-					var body = JSON.stringify({});
-					
-					if(document.getElementById("sideprofile").style.display != "block"){
-							document.getElementById("sideinfo").style.display = "none";
-							document.getElementById("sideupload").style.display = "none";
-							document.getElementById("sideconfig").style.display = "none";
+		for (const insert of inserts) {
+			insert.addEventListener(methode, animationTrigger, false);
 
-							var destination = "sideprofile"; 
-							sideLoader(url, body, destination);
-					}
-					break;
-				case "playlist":
-					var url = "wunschliste/";
-					var body = JSON.stringify({});
-	
-					if(document.getElementById("sideconfig").style.display != "block"){
-							document.getElementById("sideprofile").style.display = "none";
-							document.getElementById("sideinfo").style.display = "none";
-							document.getElementById("sideupload").style.display = "none";
+			var sidenode = document.createElement('div');
+			sidenode.class = "sidemodul";
+			sidenode.id = "side"+insert.id;
 
-							var destination = "sideconfig"; 
-							sideLoader(url, body, destination);
-					}
-					break;
-				case "upload":
-					var url = "upload/";
-					var body = JSON.stringify({});
-	
-					if(document.getElementById("sideupload").style.display != "block"){
-							document.getElementById("sideconfig").style.display = "none";
-							document.getElementById("sideprofile").style.display = "none";
-							document.getElementById("sideinfo").style.display = "none";
+			document.getElementById("sidecontainer").appendChild(sidenode);
 
-							var destination = "sideupload"; 
-							sideLoader(url, body, destination);
-					}
-					break;
-				case "overlay": case "closeside":
-					document.getElementById("sidecontainer").style.width = "0";
-					document.getElementById("overlay").style.opacity = "0";
-					document.getElementById("closeside").style.opacity = "0";
 
-					setTimeout(()=>{
-						document.getElementById("overlay").style.zIndex = "-10";
-						document.getElementById("overlay").style.display = "none";
-						document.getElementById("closeside").style.display = "none";
+		}
+	}
 
-						document.getElementById("sideconfig").style.display = "none";
-						document.getElementById("sideprofile").style.display = "none";
-						document.getElementById("sideinfo").style.display = "none";
-						document.getElementById("sideupload").style.display = "none";
-					}, 666);
+	function animationTrigger(event){
+		event.preventDefault();
 
-					
-					break;
-				default:
-					break;
-	
+		if (event.currentTarget.id == "overlay" || event.currentTarget.id == "closeside") {
+
+			document.getElementById("sidecontainer").style.width = "0";
+			document.getElementById("overlay").style.opacity = "0";
+			document.getElementById("closeside").style.opacity = "0";
+
+			setTimeout(()=>{
+				document.getElementById("overlay").style.zIndex = "-10";
+				document.getElementById("overlay").style.display = "none";
+				document.getElementById("closeside").style.display = "none";
+
+				const inserts = document.querySelectorAll('.sidemodul');
+
+				for (const insert of inserts) {
+					insert.style.display = "none";
+				}
+
+			}, 666);
+
+		} else {
+
+			var url = event.currentTarget.dataset.target;
+			var body = JSON.stringify({});
+
+			if(document.getElementById("side"+event.currentTarget.id).style.display != "block"){
+				const inserts = document.querySelectorAll('.sidemodul');
+
+				for (const insert of inserts) {
+					if(insert != document.getElementById("side"+event.currentTarget.id))
+					insert.style.display = "none";
+				}
+
+
+				var destination = "side"+event.currentTarget.id; 
+				sideLoader(url, body, destination);
 			}
+
+		}
 	}
 
 	function sideLoader(url, body, destination){
-			document.getElementById("sidecontainer").style.width = "26rem";
-			document.getElementById("overlay").style.display = "block";
-			
-			
-			document.getElementById("closeside").style.display = "block";
-			document.getElementById("closeside").style.opacity = "1";
-			document.getElementById("overlay").style.opacity = "0.25";
-			document.getElementById("overlay").style.zIndex = "19";
+		document.getElementById("sidecontainer").style.width = "26rem";
+		document.getElementById("overlay").style.display = "block";
+
+
+		document.getElementById("closeside").style.display = "block";
+		document.getElementById("closeside").style.opacity = "1";
+		document.getElementById("overlay").style.opacity = "0.25";
+		document.getElementById("overlay").style.zIndex = "19";
 			
 
-			fetch(url, {
-				method: 'post',
-				headers: {
-					"Content-type": "text/html"
-				},
-				body: body
-			}).then(function (response) {
-				return response.text();
-			}).then(function (data) {
-				//console.log(data);
-				document.getElementById(destination).style.display = "block";
-				document.getElementById(destination).innerHTML = ""+data;
-	
-			}).catch(function (error) {
-				console.log('Request failed', error);
-			});
-		
+		fetch(url, {
+			method: 'post',
+			headers: {
+				"Content-type": "text/html"
+			},
+			body: body
+		}).then(function (response) {
+			return response.text();
+		}).then(function (data) {
+			//console.log(data);
+			document.getElementById(destination).style.display = "block";
+			document.getElementById(destination).innerHTML = ""+data;
 
+		}).catch(function (error) {
+			console.log('Request failed', error);
+		});
 	}
-});
+
 </script>
 
 <div height="0px" id="activeContainer"></div>
