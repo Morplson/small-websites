@@ -4,83 +4,22 @@
 	<title>topmenu</title>
 
 	<link rel="stylesheet" type="text/css" href="main.css">
+	<link rel="stylesheet" type="text/css" href="topmenu.css">
 
-	<style>
-	main{
-		margin-top: 3.5rem;
-	}
-
-	input[type="text"].search {
-		vertical-align: middle;
-		margin: 0;
-		padding: 0;
-
-		background-color: transparent;
-		border: none;
-		color: black;
-	}
-
-	.header{
-		-webkit-user-select: none;
-		-moz-user-select: none;
-		-ms-user-select: none;
-		user-select: none;		
-		position: fixed;
-		top: 0;
-		left: 0;
-		right: 0;
-		z-index: 5;
-
-		display: flex;
-		flex-direction: row;
-		justify-content: space-around;
-
-		padding-left: 3.5rem;
-		padding-right: 3.5rem;
-		background-color: white;
-
-		height: 3rem;
-		overflow: hidden;
-
-
-	}
-
-	.header a{
-		color: black;
-	}
-
-	.header .label{
-		font-weight: bold;
-
-	}
-
-	.header .item{
-		transition: background-color .6s;
-		padding: 0 1rem;
-		line-height: 3rem;
-	}
-
-	.item:hover{
-		background-color: #f2f2f2
-	}
-
-</style>
 </head>
 <body>
 	<div class="header">
 		<div data-target="index.html" class="label item">Index</div>
-		<div data-target="bubblemenu.html" class=" item">bubble</div>
-		<div data-target="sidemenu.html" class=" item">side</div>
-		<div data-target="index-win95.html" class=" item">win95</div>
-		<div data-target="#id3" class=" item">3col</div>
+		<div data-target="bubblemenu.html" class="item">bubble</div>
+		<div data-target="#id3" class="item">3col</div>
 		
 
-		<div class="item">
-			<input id="search" class="search" type="text" placeholder="Search..." name="sInput">
-			<i class="fas fa-search" onclick="search()"></i>
+		<div class="item search">
+			<input id="searchinp" class="searchinp" type="text" placeholder="Search..." name="sInput">
+			<div id="searchb" class="searchb">Suche</div>
 		</div>
 		
-		<div style="float: right; line-height: 3rem;">
+		<div class="misc">
 			<script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Support Us', '#9046b8', 'F2F1TG5Q');kofiwidget2.draw();</script>
 		</div>
 		
@@ -243,23 +182,11 @@
 	</main>
 
 	<script type="text/javascript">
-		/*const searchinp = document.getElementById("search");
-		searchinp.addEventListener("keyup", ()=>{
-			if (event.key === "Enter") {
-				search();
-			}
-		});
 
-		const searchinpm = document.getElementById("searchm");
-		searchinpm.addEventListener("keyup", ()=>{
-			if (event.key === "Enter") {
-				search();
-			}
-		});
 
-		function search(){
-       		window.location.replace("search.php?s="+searchinp.value);
-    	}*/
+
+
+
 	
 	window.addEventListener('load', function() {
     	initTopMenu();
@@ -278,8 +205,17 @@
 
 		for (const insert of inserts) {
 			insert.addEventListener(methode, topLink, false);
-
 		}
+
+		let searchinp = document.getElementById("searchinp");
+		searchinp.addEventListener("keyup", ()=>{
+			if (event.key === "Enter") {
+				search();
+			}
+		}, false);
+
+		let searchb = document.getElementById("searchb");
+		searchb.addEventListener(methode, search, false);
 	}
 
 	function topLink(event) {
@@ -290,9 +226,10 @@
 		}else{
 			window.location.href = target;
 		}
+	}
 
-
-		
+	function search(){
+		window.location.href = "search.php?s="+document.getElementById("searchinp").value;
 	}
 
 

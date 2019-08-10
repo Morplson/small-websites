@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Loader</title>
+		<link rel="stylesheet" type="text/css" href="main.css">
+
+		<style type="text/css">
+			.loader{
+				width: 100%;
+				height: 100%;
+				pointer-events: none;
+			}
+
+			.loader .inner{
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				-webkit-transform: translate(-50%, -50%);
+				transform: translate(-50%, -50%);
+
+				display: flex;
+				align-items: center;
+			}
+
+			.loader .blob{
+				width: 0.5rem;
+				height: 0.5rem;
+				border-radius: 0.25rem;
+				margin: 0.0625rem;
+				background-color: #ededed;
+				animation: loading 6s infinite;
+			}
+
+			@keyframes loading{
+				0%{
+					height: 0.5rem;
+					border-radius: 0.25rem;
+					background-color: #ededed;
+				}
+
+				3%{
+					border-radius: 0.125rem;
+				}
+
+				6%{
+					background-color: #ccc;
+				}
+
+				10%{
+					height: 2rem;
+				}
+
+				12.5%{
+					height: 2rem;
+				}
+
+				15%{
+					background-color: #ccc;
+				}
+
+
+				22%{
+					border-radius: 0.125rem;
+				}
+
+				25%{
+					height: 0.5rem;
+					border-radius: 0.25rem;
+					background-color: #ededed;
+				}
+			}
+
+			.loader .blob:nth-child(1) { 
+				animation-delay: 0s;
+			}
+
+			.loader .blob:nth-child(2) {
+				animation-delay: 0.5s;
+			}
+
+			.loader .blob:nth-child(3) { 
+				animation-delay: 1s;
+			}
+
+			.loader .blob:nth-child(4) { 
+				animation-delay: 1.5s;
+			}
+
+			.loader .blob:nth-child(5) { 
+				animation-delay: 2s;
+			}
+
+			.loader .blob:nth-child(6) { 
+				animation-delay: 2.5s;
+			}
+
+
+		</style>
+	</head>
+	<body>
+		<div class="loader">
+			<div class="inner">
+				<div class="blob"></div>
+				<div class="blob"></div>
+				<div class="blob"></div>
+				<div class="blob"></div>
+				<div class="blob"></div>
+				<div class="blob"></div>
+			</div>
+		</div>
+	</body>
+</html>
