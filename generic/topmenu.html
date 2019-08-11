@@ -189,7 +189,7 @@
 
 	
 	window.addEventListener('load', function() {
-    	initTopMenu();
+		initTopMenu();
 	});
 		
 	
@@ -224,12 +224,12 @@
 		if(target.indexOf('#')==0){
 			document.getElementById(target.replace('#','')).scrollIntoView();
 		}else{
-			window.location.href = target;
+			top.window.location.href = target;
 		}
 	}
 
 	function search(){
-		window.location.href = "search.php?s="+document.getElementById("searchinp").value;
+		top.window.location.href = "search.php?s="+document.getElementById("searchinp").value;
 	}
 
 
