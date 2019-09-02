@@ -4,81 +4,23 @@
 	<title>topmenu</title>
 
 	<link rel="stylesheet" type="text/css" href="main.css">
+	<link rel="stylesheet" type="text/css" href="topmenu.css">
 
-	<style>
-	main{
-		margin-top: 3.5rem;
-	}
-
-	input[type="text"].search {
-		vertical-align: middle;
-		margin: 0;
-		padding: 0;
-
-		background-color: transparent;
-		border: none;
-		color: black;
-	}
-
-	.header{
-		-webkit-user-select: none;
-		-moz-user-select: none;
-		-ms-user-select: none;
-		user-select: none;		
-		position: fixed;
-		top: 0;
-		left: 0;
-		right: 0;
-		z-index: 5;
-
-		display: flex;
-		flex-direction: row;
-		justify-content: space-around;
-
-		padding-left: 3.5rem;
-		padding-right: 3.5rem;
-		background-color: white;
-
-		height: 3rem;
-		overflow: hidden;
-
-
-	}
-
-	.header a{
-		color: black;
-	}
-
-	.header .label{
-		font-weight: bold;
-
-	}
-
-	.header .item{
-		transition: background-color .6s;
-		padding: 0 1rem;
-		line-height: 3rem;
-	}
-
-	.item:hover{
-		background-color: #f2f2f2
-	}
-
-</style>
 </head>
 <body>
 	<div class="header">
-		<div class="label item">Shop.com</div>
-		<div class="desktop item">Beliebt</div>
-		<div class="desktop item">Neu</div>
-
-		<div class="desktop item">
-			<input id="search" class="search" type="text" placeholder="Search..." name="sInput">
-			<i class="fas fa-search" id="searchicon"></i>
-		</div>
-		<div class="desktop item">Login</div>
+		<div data-target="index.html" class="label item">Index</div>
+		<div data-target="bubblemenu.html" class="item">bubble</div>
+		<div data-target="#id3" class="item">3col</div>
 		
-		<div class="desktop" style="float: right; line-height: 3rem;">
+
+
+		<div class="item search">
+			<input id="searchinp" class="searchinp" type="text" placeholder="Search..." name="sInput">
+			<div id="searchb" class="searchb">Suche</div>
+		</div>
+		
+		<div class="misc">
 			<script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Support Us', '#9046b8', 'F2F1TG5Q');kofiwidget2.draw();</script>
 		</div>
 		
@@ -128,7 +70,7 @@
 		</div>
 
 
-		<div class="box b3 s3">
+		<div id="id3" class="box b3 s3">
 			<div class="inside">
 				<p>
 					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -241,54 +183,64 @@
 	</main>
 
 	<script type="text/javascript">
-		const searchinp = document.getElementById("search");
+
+
+
+
+
+	
+	window.addEventListener('load', function() {
+		initTopMenu();
+	});
+		
+	
+
+	function initTopMenu(methode) {
+		if (!methode) {
+			methode = "click";
+		}
+
+
+		const inserts = document.querySelectorAll('.item');
+		console.info("initTopMenu");
+
+		for (const insert of inserts) {
+			insert.addEventListener(methode, topLink, false);
+		}
+
+		let searchinp = document.getElementById("searchinp");
 		searchinp.addEventListener("keyup", ()=>{
 			if (event.key === "Enter") {
 				search();
 			}
-		});
+		}, false);
 
-		const searchinpm = document.getElementById("searchicon");
-		searchinpm.addEventListener("click", ()=>{
-				search();
-		});
+		let searchb = document.getElementById("searchb");
+		searchb.addEventListener(methode, search, false);
+	}
 
-		function search(){
-       		window.location.replace("search.php?s="+searchinp.value);
-    	}
-	
+	function topLink(event) {
+		let target = event.currentTarget.dataset.target;
 
-		const mobilemenu = document.getElementById("mobilemenu");
-		mobilemenu.addEventListener("mouseover", function(event) {
-    		
-       		let el = document.getElementById("mobilehovercontainer");
-       		el.style.display = "block";
-       		el.style.left = mobilemenu.offsetLeft+"px";
-       		el.style.top =  mobilemenu.offsetTop+mobilemenu.offsetHeight+"px";
+		if(target.indexOf('#')==0){
+			document.getElementById(target.replace('#','')).scrollIntoView();
+		}else{
+			top.window.location.href = target;
+		}
+	}
 
-		});
-		mobilemenu.addEventListener("mouseout", function(event) {
-    		
-       		let el = document.getElementById("mobilehovercontainer");
-       		el.style.display = "none";
-    	
-		});
+	function search(){
+		top.window.location.href = "search.php?s="+document.getElementById("searchinp").value;
+	}
 
 
 
-		const mobilehovercontainer = document.getElementById("mobilehovercontainer");
-		mobilehovercontainer.addEventListener("mouseover", function(event) {
-    		
-       		let el = document.getElementById("mobilehovercontainer");
-       		el.style.display = "block";
-    	
-		});
-		mobilehovercontainer.addEventListener("mouseout", function(event) {
-    		
-       		let el = document.getElementById("mobilehovercontainer");
-       		el.style.display = "none";
-    	
-		});
+
+
+
+
+
+
 
 	</script>
 

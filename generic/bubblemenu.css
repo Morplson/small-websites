@@ -1,0 +1,91 @@
+
+	aside.bubblemenu{
+		position: fixed;
+		top:10%;
+		left:0;
+		height: 50%;
+
+		-webkit-user-select: none;
+		-moz-user-select: none; 
+		-ms-user-select: none;
+		user-select: none; 
+
+		display: flex;
+		flex-direction: column;
+		justify-content: space-evenly;
+		align-items: flex-start;
+
+	}
+
+	aside.bubblemenu > .menucapsule{
+
+		z-index: 100;
+
+		font-size: 1rem;
+
+		height: 2.5rem;
+		line-height: 2.5rem;
+		border-radius: 2.5rem;
+		padding-left: 2.5rem; 
+		margin-left: -2.5rem; 
+
+		white-space: nowrap;
+		transition: all .6s ease;
+
+
+		cursor: pointer;
+
+		background-color: white;
+		box-shadow: 0.125rem 0.125rem 0.25rem #999999;
+	}
+
+	.menucapsule > .menutext{
+		font-size: inherit;
+		padding: 0rem;
+		height: 100%;
+		width: 0;
+
+		text-align: center;
+		float:left;
+		display: inline-block;
+
+		overflow: hidden;
+		text-overflow: clip;
+		white-space: nowrap;
+
+
+		transition: all .6s ease;
+	}
+
+	aside.bubblemenu > .menucapsule:hover > .menutext{
+		padding: 0 0.25rem;
+		width: 9rem;
+
+	}
+
+	aside.bubblemenu > .menucapsule:hover{
+		background-color: #f2f2f2;
+	}
+
+	aside.bubblemenu > .menucapsule > .menuicon{
+		font-size: inherit;
+
+		width:3rem;
+
+		text-align: center;
+		float:left;
+		display: inline-block;
+
+		overflow: hidden;
+		text-overflow: clip;
+		white-space: nowrap;
+	}
+
+	aside.bubblemenu > .menucapsule.active{
+		font-size: 1.125rem;
+		height: 3rem !important;
+		line-height: 3rem !important;
+		border-radius: 3rem !important;
+		padding-left: 3rem !important;
+		margin-left: -3rem !important;
+	}
