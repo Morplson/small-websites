@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<html>
+	<head>
+		<title>small-website1</title>
+
+		<style type="text/css">
+			.full{
+				font-size: 1rem;
+				
+			}
+
+			#dummyContainer, #activeContainer{
+				height: 0;
+				overflow: hidden;
+
+			}
+
+			.effect{
+				filter: url("#filter");
+			}
+		</style>
+
+
+	</head>
+	<body>
+		<main>
+			<div class="effect"  >
+				<h1>jenga-tournament<h1>
+
+				<h2 class="bouncey">1000$ Bountey<h2>
+
+			</div>
+
+			<div class="full">
+				<img class="effect" src="https://images.pexels.com/photos/20787/pexels-photo.jpg?cs=tinysrgb&dpr=1&w=500">
+
+			</div>
+			<div class="full">
+				<img class="effect" src="1556684056434.gif">
+
+			</div>
+
+		</main>
+
+<div height="0px" id="activeContainer"></div>
+
+<div height="0px" id="dummyContainer">
+	<svg xmlns="http://www.w3.org/2000/svg" version="1.1" id="dummyWaves">
+		<defs>
+	
+			<filter id="filter" color-interpolation-filters="sRGB" filterUnits="objectBoundingBox">
+
+                <feGaussianBlur stdDeviation="10 0" in="SourceGraphic" edgeMode="wrap" result="rt1"/>
+       
+                <feColorMatrix type="matrix" values="
+                1 0 0 0 0
+                0 0 0 0 0
+                0 0 0 0 0
+                0 0 0 1 0" in="rt1" result="red"/>
+        
+                <feColorMatrix type="matrix" values="
+                0 0 0 0 0
+                0 1 0 0 0
+                0 0 1 0 0
+                0 0 0 1 0" in="SourceGraphic" result="blue"/>
+  
+                <feBlend mode="screen" in="red" in2="blue" result="3d"/>
+
+			</filter>
+		</defs>
+	</svg>
+</div>
+
+
+
+
+	</body>
+</html>

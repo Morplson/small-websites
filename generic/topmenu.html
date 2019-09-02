@@ -74,7 +74,7 @@
 
 		<div class="desktop item">
 			<input id="search" class="search" type="text" placeholder="Search..." name="sInput">
-			<i class="fas fa-search" onclick="search()"></i>
+			<i class="fas fa-search" id="searchicon"></i>
 		</div>
 		<div class="desktop item">Login</div>
 		
@@ -248,11 +248,9 @@
 			}
 		});
 
-		const searchinpm = document.getElementById("searchm");
-		searchinpm.addEventListener("keyup", ()=>{
-			if (event.key === "Enter") {
+		const searchinpm = document.getElementById("searchicon");
+		searchinpm.addEventListener("click", ()=>{
 				search();
-			}
 		});
 
 		function search(){

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+<head>
+	<title>Jeep</title>
+
+	<link rel="stylesheet" type="text/css" href="main.css">
+
+
+	<script type="text/javascript">
+		var elementcounter = 0;
+		window.addEventListener('load', function() {
+	    	initEffectHandler();
+		});
+			
+		
+
+		function initEffectHandler(methode) {
+			if (!methode) {
+				methode = "mouseenter";
+			}
+			const inserts = document.querySelectorAll('.effect');
+			console.info("init");
+
+			for (const insert of inserts) {
+	  				insert.addEventListener(methode, waves3dEffect, false);
+			}
+		}
+
+
+		function waves3dEffect(event) {
+			elementcounter += 1;
+			let name = "wave"+elementcounter;
+
+			let cloned = document.getElementById("dummyWaves").cloneNode(true);
+
+			cloned.id = "cont"+name;
+			
+
+			let filter = cloned.querySelector("defs filter");
+			let turbulence = cloned.querySelector("defs filter *[name='turbulence']");
+			let red = cloned.querySelector("defs filter *[name='red']");
+			let blue = cloned.querySelector("defs filter *[name='blue']");
+
+			filter.id = name;
+
+			document.getElementById('activeContainer').appendChild(cloned);
+
+
+			event.target.style.filter = "url('#"+name+"')";
+
+			turbulence.seed.baseVal = ""+Math.floor(Math.random() * (1000 - 1) + 1);
+
+			let start = null;
+
+			let rdx = Math.random() * (20 - 5) + 5;
+			let rdy = Math.random() * (7 - 2) + 2;
+
+			let bdx	= Math.random() * (2 - 0) + 0;
+			let bdy	= Math.random() * (2 - 0) + 0;
+
+
+			function animation3d(timestamp) {
+				if (!start) start = timestamp;
+				let progress = timestamp - start;
+
+				let adder = (progress<250)?progress:500-progress;
+
+				red.dx.baseVal = ""+(rdx/250)*adder;
+				red.dy.baseVal = ""+(rdy/250)*adder;
+
+				blue.dx.baseVal = "-"+(bdx/250)*adder;
+				blue.dy.baseVal = "-"+(bdy/250)*adder;
+
+
+				turbulence.baseFrequencyY.baseVal = (0.25/250)*adder;
+
+
+				if(progress<500){
+					window.requestAnimationFrame(animation3d);
+				}
+				
+			}
+
+			window.requestAnimationFrame(animation3d);
+
+			setTimeout(function() {
+				document.getElementById('activeContainer').removeChild(cloned)
+	    		event.target.style.filter = "";
+	  		}, 500);
+		}
+
+
+
+	</script>
+</head>
+<body>
+
+	<main>
+		
+		<div class="box b1">
+			
+			<div class="inside">
+				<h1>BurgenlandZ</h1>
+				<h2>Video schaun!</h2>
+				<div class="imgout">
+					<iframe class="imgin" width="560" height="315" src="https://www.youtube.com/embed/pWco7rrjX9g?rel=0&amp;autoplay " frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				</div>
+			</div>
+		</div>
+
+		<div class="box b2 s1">
+			<div class="inside">
+				<h2>RadioWinnerTeam</h2>
+				<div class="imgout">
+					<iframe class="imgin" src="https://www.radioking.com/widgets/player/player.php?id=229342&c=%231E7FCB&c2=%23FFFFFF&ii=&p=1&pp=1&i=1&eq=1&po=1&t=1&f=v&v=2&s=1&li=1&h=365&l=470&a=0&plc=0&popup=1" name="idFrame" id="idFrame" style="border-radius: 5px; width:275px;height:365px; min-height: 365px;" frameBorder="0"></iframe>
+				</div>
+				
+
+			</div>
+		</div>
+
+		<div class="box b2 s1">
+			<div class="inside">
+				<h2>Chad</h2>
+				<picture>
+					<img src="chad.jpg">
+				</picture>
+				<p>
+					Wir haben neue news story. Chad is taking over. Pls CHad don't take me. Pls 
+				</p>
+				
+
+			</div>
+		</div>
+
+		<div class="box b2 s1">
+			<div class="inside">
+				<h2>Reddit invasion</h2>
+				<picture>
+					<img src="hireddit.jpg">
+				</picture>
+				<p>
+					Burgenland Zeitung beritchtet neu: Reddit in Gefahr!!!<br>
+					I sexually Identify as an unoriginal joke. Ever since I was a boy I dreamed of dropping shitposts on reddit and derailing actual conversation. People say to me that this has been really going on for far too long and and it trivialises gender identity but I don’t care, I'm a massive asshole. I’m having a plastic surgeon install a mountain dew dispenser, a catheter and and a poop chute on my body. From now on I want you guys to call me “Logical Gamer” and respect my right to freeze peach. If you can’t accept me you’re a god damn tumblirina sjw cultural marxist liberal and you triggered lol?. Thank you for being so understanding.
+				</p>
+			</div>
+		</div>
+
+
+		<div class="box b2 s1">
+			<div class="inside">
+				<h2>??</h2>
+				<picture>
+					<img src="lol.jpg">
+				</picture>
+				<p>
+					I didnt🚫🚫🚫🚫fuck🍑🍆 stalin. i didnt🚫 cum on💦💦 stalin. i didnt🚫🚫🚫🚫 put my dick🍆🍆🍆anywhere near🗺️ 🗺️ 🗺️ stalin. Ive never🙅🙅🙅 done anything weird😉😉😉 with stalin. I promised🙏🙏🙏 myself i wasnt🚫🚫🚫 going to make apology videos🎥🎥🎥 after last years📆 thing😱😱😱 so im just trying to be as short and honest😇t😇t😇 with this as possible.
+				</p>
+			</div>
+		</div>
+
+
+</main>
+
+<div height="0px" id="activeContainer"></div>
+
+<div height="0px" id="dummyContainer">
+	<svg xmlns="http://www.w3.org/2000/svg" version="1.1" id="dummyWaves">
+		<defs>
+	
+			<filter id="filter" color-interpolation-filters="sRGB" x="-40%" y="-40%" width="180%" height="180%" filterUnits="objectBoundingBox">
+
+				<feTurbulence name="turbulence" type="fractalNoise" in="SourceGraphic" baseFrequency="0 0" numOctaves="1" seed="01" stitchTiles="stitch" result="turbulence"/>
+        
+				<feDisplacementMap in="SourceGraphic" in2="turbulence" scale="20"xChannelSelector="A" yChannelSelector="A" result="waves"/>
+        
+        
+				<feOffset name="red" dx="0" dy="0" in="waves" result="rt1"/>
+        
+				<feColorMatrix type="matrix" values="
+				1 0 0 0 0
+				0 0 0 0 0
+				0 0 0 0 0
+				0 0 0 1 0" in="rt1" result="red"/>
+        
+        
+				<feOffset name="blue" dx="-0" dy="-0" in="waves" result="bt1"/>
+
+				<feColorMatrix type="matrix" values="
+				0 0 0 0 0
+				0 1 0 0 0
+				0 0 1 0 0
+				0 0 0 1 0" in="bt1" result="blue"/>
+  
+				<feBlend mode="screen" in="red" in2="blue" result="3d"/>
+
+			</filter>
+		</defs>
+	</svg>
+</div>
+
+
+</body>
+
+</html>
