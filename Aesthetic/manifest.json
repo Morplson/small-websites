@@ -1,0 +1,16 @@
+{
+
+  "manifest_version": 2,
+  "name": "Aesthetic",
+  "version": "1.0",
+
+  "description": "Adds rgb displacement",
+
+  "content_scripts": [
+    {
+		"matches": ["<all_urls>"],
+		"js": ["filter.js"]
+    }
+  ]
+
+}

@@ -7,59 +7,9 @@
 
 	</head>
 	<body>
-		<a class="" data-type="window" data-target="index.html">window</a>
-		<a class="" data-type="tab" data-target="index.html">tab</a>
-		<a class="" data-type="" data-target="index.html">self</a>
-
-		<script type="text/javascript">
-			
-
-	
-			window.addEventListener('load', function() {
-				initLinkEngine();
-			});
-				
-			
-
-			function initLinkEngine(methode) {
-				if (!methode) {
-					methode = "click";
-				}
-		
-
-				const inserts = document.querySelectorAll('a');
-				console.info("initLinkEngine");
-
-				for (const insert of inserts) {
-					insert.addEventListener(methode, linkEngine, false);
-				}
-			}
-
-			function linkEngine(event) {
-				let target = event.currentTarget.dataset.target;
-
-				if(target.indexOf('#')==0){
-					document.getElementById(target.replace('#','')).scrollIntoView();
-				}else{
-					switch (event.currentTarget.dataset.type) {
-						case "window":
-							window.open(target,"_blank","width=1280,height=720");
-							break;
-
-						case "tab":
-							window.open(target,"_blank");
-							break;
-
-						default: case "self":
-							top.window.location.href = target;
-							break;
-					}
-					
-				}
-			}
-
-
-		</script>
+		<a target="_blank" href="index.html" class="">tab</a>
+		<a target="_blank" href="index.html" download="INDEX" class="">download</a>
+		<a target="_top" href="index.html" class="">self</a>
 
 	</body>
 </html>
