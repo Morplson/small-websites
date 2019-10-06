@@ -67,36 +67,33 @@ for(x=0;x<allItems.length;x++){
 
 class Infinyload{
   constructor(){
-
     this.grid = document.getElementsByClassName("grid")[0];
-    this.allItems = document.getElementsByClassName("item");
-
 
 
     window.addEventListener("scroll", this.infinyload.bind(this));
     window.addEventListener("resize", this.resizeAllItems.bind(this));
 
 
-
     this.load();
-
     this.resizeAllItems();
 
+
+    this.allItems = document.getElementsByClassName("item");
     for (var i = this.allItems.length - 1; i >= 0; i--) {
-      imagesLoaded(this.allItems[i], this.resizeInstance.bind(this));
+      this.allItems[i].addEventListener('load', this.resizeInstance.bind(this));
     }
   }
 
   infinyload(){
     console.log(eval(document.documentElement.scrollTop + document.documentElement.clientHeight)+" : "+eval(document.documentElement.scrollHeight-20));
     if (document.documentElement.scrollTop + document.documentElement.clientHeight >= document.documentElement.scrollHeight-20){
-      //var last = document.getElementById("main").lastChild.id;
-      this.load();
 
+      this.load();
       this.resizeAllItems();
 
+      this.allItems = document.getElementsByClassName("item");
       for (var i = this.allItems.length - 1; i >= 0; i--) {
-        imagesLoaded(this.allItems[i], this.resizeInstance.bind(this));
+        this.allItems[i].addEventListener('load', this.resizeInstance.bind(this));
       }
     }
   }
