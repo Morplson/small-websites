@@ -10,6 +10,13 @@ console.log("Infinyload Version 06_10_2019 (Beta) initiated");
 class Infinyload{
   constructor(id){
     this.grid = document.getElementById(id);
+    this.iframe = document.createElement("IFRAME");
+    
+
+    this.iframe.style.height = "0px";
+    this.iframe.className = "loaderbox";
+    this.iframe.src = "loader.html";
+    this.grid.appendChild(this.iframe);
 
 
     window.addEventListener("scroll", this.infinyload.bind(this));
@@ -24,10 +31,11 @@ class Infinyload{
     for (var i = this.allItems.length - 1; i >= 0; i--) {
       this.allItems[i].addEventListener('load', this.resizeInstance.bind(this));
     }
+
   }
 
+
   infinyload(){
-    //console.log(eval(document.documentElement.scrollTop + document.documentElement.clientHeight)+" : "+eval(document.documentElement.scrollHeight-20));
     if (document.documentElement.scrollTop + document.documentElement.clientHeight >= document.documentElement.scrollHeight-20){
 
       this.load();
@@ -60,16 +68,28 @@ class Infinyload{
   }
 
 
-
+  
   load(){
+    this.loaderUp();
+
     //TEST DIVS
     for (var i = 0; i <= 50; i++) {
       var div = document.createElement('div');
       div.setAttribute('class', 'item');
-      div.innerHTML = "<div class='content'>"+i+" : "+makeid(Math.floor(Math.random()*100+1))+"</div>";
+      div.innerHTML = "<div class='content'>"+i+" : "+makeid(Math.floor(Math.random()*500+50))+"</div>";
 
       this.grid.appendChild(div);
     }
+
+     window.setTimeout(this.loaderDown.bind(this),10);
+  }
+
+  loaderUp(){
+    this.iframe.style.height = "5rem";
+  }
+
+  loaderDown(){
+    this.iframe.style.height = "0px";
   }
 }
 
