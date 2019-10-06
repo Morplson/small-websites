@@ -1,9 +1,11 @@
 
 /**
  * Author: probing
- * Version: 06_10_2019
+ * Version: 06_10_2019 (Beta)
  * Loads data in a mosaik
  */
+
+console.log("Infinyload Version 06_10_2019 (Beta) initiated");
 
 class Infinyload{
   constructor(id){
@@ -25,7 +27,7 @@ class Infinyload{
   }
 
   infinyload(){
-    console.log(eval(document.documentElement.scrollTop + document.documentElement.clientHeight)+" : "+eval(document.documentElement.scrollHeight-20));
+    //console.log(eval(document.documentElement.scrollTop + document.documentElement.clientHeight)+" : "+eval(document.documentElement.scrollHeight-20));
     if (document.documentElement.scrollTop + document.documentElement.clientHeight >= document.documentElement.scrollHeight-20){
 
       this.load();
