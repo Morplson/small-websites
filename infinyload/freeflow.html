@@ -2,27 +2,50 @@
 <html>
 <head>
   <style type="text/css">
-    .grid {
-  display: grid;
-  grid-gap: 0.5rem;
-  grid-template-columns: repeat(auto-fill, minmax(15rem,1fr));
-  grid-auto-rows: 0;
-}
+
 
 /* Non-grid specific CSS */  
-body {
-  margin: 10px;
-  color: #374046;
-  background-color: #374046;
-  font-size: 1.15em;
+@import url('https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900&display=swap');
+
+*{
+  font-size: 14pt;
+  font-family: 'Raleway', sans-serif; 
+  scroll-behavior: smooth;
+}
+
+@media (min-width: 15rem) and ( max-width: 25rem){
+  *{
+    font-size: 12pt;
+  }
+}
+
+@media (max-width: 15rem){
+  *{
+    font-size: 11pt;
+  }
+}
+
+body{
+  font-weight: 300; 
+  x-overflow: hidden;
+  padding: 0;
+  margin: 0;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
 
+.grid {
+  margin: 0.5rem;
+  display: grid;
+  grid-gap: 0.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(13.5rem,1fr));
+  grid-auto-rows: 0;
+}
+
 .item {
-  background-color: #ffffff;
+  border: 1px solid #E8E8E8;
+  padding: 0.25rem;
   word-break:break-all;
-  overflow: all;
 }
 
   </style>
@@ -30,44 +53,12 @@ body {
   <title></title>
   
   <script type="text/javascript">
-/*
-    function resizeGridItem(item){
-  grid = document.getElementsByClassName("grid")[0];
-  rowHeight = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-auto-rows'));
-  rowGap = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-row-gap'));
-  rowSpan = Math.ceil((item.querySelector('.content').getBoundingClientRect().height+rowGap)/(rowHeight+rowGap));
-    item.style.gridRowEnd = "span "+rowSpan;
-}
-
-function resizeAllGridItems(){
-  allItems = document.getElementsByClassName("item");
-  for(x=0;x<allItems.length;x++){
-    resizeGridItem(allItems[x]);
-  }
-}
-
-function resizeInstance(instance){
-  item = instance.elements[0];
-  resizeGridItem(item);
-}
-
-window.addEventListener("load", resizeAllGridItems);
-window.addEventListener("resize", resizeAllGridItems);
-
-allItems = document.getElementsByClassName("item");
-for(x=0;x<allItems.length;x++){
-  imagesLoaded( allItems[x], resizeInstance);
-}
-*/
-
-
-
 
 // infinyload
 
 class Infinyload{
-  constructor(){
-    this.grid = document.getElementsByClassName("grid")[0];
+  constructor(id){
+    this.grid = document.getElementById(id);
 
 
     window.addEventListener("scroll", this.infinyload.bind(this));
@@ -128,12 +119,6 @@ class Infinyload{
 
       this.grid.appendChild(div);
     }
-
-
-
-
-
-
   }
 }
 
@@ -153,11 +138,11 @@ function makeid(length) {
   </script>
 </head>
 <body>
-<div class="grid">
+<div class="grid" id="inf01">
 
 </div>
 <script type="text/javascript">
-  var inf = new Infinyload();
+  var inf = new Infinyload("inf01");
 </script>
 </body>
 </html>
