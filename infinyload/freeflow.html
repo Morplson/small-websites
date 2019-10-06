@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style type="text/css">
+    .grid {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(250px,1fr));
+  grid-auto-rows: 20px;
+}
+
+/* Non-grid specific CSS */  
+body {
+  margin: 10px;
+  color: #374046;
+  background-color: #374046;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 1.15em;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+.item {
+  background-color: #ffffff;
+}
+
+  </style>
+
+  <title></title>
+  
+  <script type="text/javascript">
+    function resizeGridItem(item){
+  grid = document.getElementsByClassName("grid")[0];
+  rowHeight = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-auto-rows'));
+  rowGap = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-row-gap'));
+  rowSpan = Math.ceil((item.querySelector('.content').getBoundingClientRect().height+rowGap)/(rowHeight+rowGap));
+    item.style.gridRowEnd = "span "+rowSpan;
+}
+
+function resizeAllGridItems(){
+  allItems = document.getElementsByClassName("item");
+  for(x=0;x<allItems.length;x++){
+    resizeGridItem(allItems[x]);
+  }
+}
+
+function resizeInstance(instance){
+  item = instance.elements[0];
+  resizeGridItem(item);
+}
+
+window.addEventListener("load", resizeAllGridItems);
+window.addEventListener("resize", resizeAllGridItems);
+
+allItems = document.getElementsByClassName("item");
+for(x=0;x<allItems.length;x++){
+  imagesLoaded( allItems[x], resizeInstance);
+}
+
+
+
+
+
+// infinyload
+
+class Infinyload{
+  constructor(){
+    this.grid = document.getElementsByClassName("grid")[0];
+    window.addEventListener("scroll", this.infinyload);
+    this.load();
+  }
+
+  infinyload(){
+    if (document.documentElement.scrollTop + document.documentElement.clientHeight >= document.documentElement.scrollHeight-20){
+      var last = document.getElementById("main").lastChild.id;
+      this.load();
+    }
+  }
+
+  load(){
+    //TEST DIVS
+    for (var i = 0; i <= 50; i++) {
+      var div = document.createElement('div');
+      div.setAttribute('class', 'item');
+      div.innerHtml = i+" : "+Math.random().toString(36);
+
+      this.grid.appendChild(div);
+    }
+  }
+}
+
+
+
+
+
+
+  </script>
+</head>
+<body>
+<div class="grid">
+
+</div>
+<script type="text/javascript">
+  var inf = new Infinyload();
+</script>
+</body>
+</html>
