@@ -1,7 +1,7 @@
 	function load() {
 		window.removeEventListener("load", load, false);
 		
-		var filter = '<svg xmlns="http://www.w3.org/2000/svg" version="1.1" id="dummyWaves"> \
+		var filter = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="dummyWaves"> \
 				<defs> \
 \
 \
@@ -35,7 +35,7 @@
 \
 				<feBlend mode="lighten" in="blurgreen" in2="flood" result="blend1"/> \
 \
-				<feBlend mode="screen" in="blend1" in2="scanlines" result="blend2"/> \
+				<feBlend mode="darken" in="blend1" in2="scanlines" result="blend2"/> \
 \
 				</filter> \
 				</defs> \
