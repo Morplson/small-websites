@@ -20,6 +20,9 @@ class Infinyload{
 
 
     window.addEventListener("scroll", this.infinyload.bind(this));
+
+    //window.addEventListener("scroll", this.inview.bind(this));
+
     window.addEventListener("resize", this.resizeAllItems.bind(this));
 
 
@@ -34,6 +37,14 @@ class Infinyload{
 
   }
 
+  inview(){
+    if (!item.classList.contains("animate")) {
+      if(item.offsetTop() < Window.screenY + Window.outerHeight - 20){
+
+     }
+    }
+
+  }
 
   infinyload(){
     if (document.documentElement.scrollTop + document.documentElement.clientHeight >= document.documentElement.scrollHeight-20){
@@ -59,6 +70,8 @@ class Infinyload{
     let rowHeight = parseInt(window.getComputedStyle(this.grid).getPropertyValue('grid-auto-rows'));
     let rowGap = parseInt(window.getComputedStyle(this.grid).getPropertyValue('grid-row-gap'));
     let rowSpan = Math.ceil((item.querySelector('.content').getBoundingClientRect().height+rowGap)/(rowHeight+rowGap));
+
+
     item.style.gridRowEnd = "span "+rowSpan;
   }
 
@@ -81,7 +94,10 @@ class Infinyload{
       this.grid.appendChild(div);
     }
 
-     window.setTimeout(this.loaderDown.bind(this),10);
+
+
+
+     window.setTimeout(this.loaderDown.bind(this),333);
   }
 
   loaderUp(){

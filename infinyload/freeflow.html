@@ -53,8 +53,28 @@ body{
   word-break:break-all;
 }
 
+.animate{
+  opacity: 0;
+  -webkit-transform: translateY(6rem);
+  transform: translateY(6rem);
+  -webkit-animation: moveUp 0.66s ease forwards;
+  animation: moveUp 0.66s ease forwards;
+}
+
+@-webkit-keyframes moveUp {
+  0% { }
+  100% { -webkit-transform: translateY(0); opacity: 1; }
+}
+
+@keyframes moveUp {
+  0% { }
+  100% { -webkit-transform: translateY(0); transform: translateY(0); opacity: 1; }
+}
+
+
 .loaderbox{
   transition: height 0.3s ease;
+
   border: 0;
   background-color: white;
 
@@ -64,6 +84,8 @@ body{
   width: 100%;
 
 }
+
+
 
   </style>
 
