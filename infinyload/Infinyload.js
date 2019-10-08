@@ -21,14 +21,13 @@ class Infinyload{
 
     window.addEventListener("scroll", this.infinyload.bind(this));
 
-    //window.addEventListener("scroll", this.inview.bind(this));
+    window.addEventListener("scroll", this.inview.bind(this));
 
     window.addEventListener("resize", this.resizeAllItems.bind(this));
 
 
     this.load();
     this.resizeAllItems();
-
 
     this.allItems = document.getElementsByClassName("item");
     for (var i = this.allItems.length - 1; i >= 0; i--) {
@@ -38,11 +37,16 @@ class Infinyload{
   }
 
   inview(){
-    if (!item.classList.contains("animate")) {
-      if(item.offsetTop() < Window.screenY + Window.outerHeight - 20){
-
-     }
+    for (var i = this.allItems.length - 1; i >= 0; i--) {
+      var item = this.allItems[i];
+      if (!item.classList.contains("animate")) {
+        var rect = item.getBoundingClientRect();
+        if(rect.top + 20<= window.innerHeight){
+          item.classList.add("animate")
+        }
+      }
     }
+    
 
   }
 
@@ -64,6 +68,8 @@ class Infinyload{
     for (var i = this.allItems.length - 1; i >= 0; i--) {
       this.resizeItem(this.allItems[i]);
     }
+
+    this.inview();
   }
 
   resizeItem(item){
