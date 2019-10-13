@@ -279,8 +279,17 @@
 		document.getElementById("overlay").style.opacity = "0.25";
 		document.getElementById("overlay").style.zIndex = "19";
 			
+			let iframe = document.createElement("iframe");
+			iframe.setAttribute("src",url);
+		
 
-		fetch(url, {
+		document.getElementById(destination).style.display = "block";
+		document.getElementById(destination).innerHTML = "";
+		document.getElementById(destination).appendChild(iframe);
+
+
+
+/**		fetch(url, {
 			method: 'post',
 			headers: {
 				"Content-type": "text/html"
@@ -295,7 +304,7 @@
 
 		}).catch(function (error) {
 			console.log('Request failed', error);
-		});
+		});*/
 	}
 
 </script>

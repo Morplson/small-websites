@@ -119,6 +119,11 @@ i.cl{
 	display: none;
 }
 
+.sidecontainer iframe{
+	width: 100%;
+	height: 100%;
+}
+
 .closeside{
 	float: right;
 	width: 3rem;
