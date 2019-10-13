@@ -8,7 +8,7 @@
 console.log("Infinyload Version 06_10_2019 (Beta) initiated");
 
 class Infinyload{
-  constructor(id){
+  constructor(gridid){
     this.grid = document.getElementById(id);
     this.iframe = document.createElement("IFRAME");
     
