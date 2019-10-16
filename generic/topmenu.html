@@ -235,7 +235,35 @@
 
 
 
+	class Searcher{
+		consectetur(){}
 
+		search(term){
+			alert("Got input \""+term+"\"");
+		}
+	}
+
+
+	class BasicSearcher extends Searcher{
+		consectetur(){
+
+		}
+
+		search(term){
+			window.find(
+			top.window.location.href = "search.php?s="+term;
+		}
+	}
+
+	class RouteSearcher extends Searcher{
+		consectetur(){
+
+		}
+
+		search(term){
+			top.window.location.href = "search.php?s="+term;
+		}
+	}
 
 
 
