@@ -8,9 +8,12 @@
 console.log("Infinyload Version 06_10_2019 (Beta) initiated");
 
 class Infinyload{
-  constructor(gridid){
+  constructor(gridid, loader){
     this.grid = document.getElementById(gridid);
     this.iframe = document.createElement("IFRAME");
+
+    this.loader = loader;
+    this.loader.destination = this.grid;
     
 
     this.iframe.style.height = "0px";
@@ -94,19 +97,10 @@ class Infinyload{
   load(){
     this.loaderUp();
 
+    this.loader.load();
+
     //TEST DIVS
-    for (var i = 0; i <= 50; i++) {
-      var div = document.createElement('div');
-      div.setAttribute('class', 'item');
-      div.innerHTML = "<div class='content'>"+i+" : "+makeid(Math.floor(Math.random()*500+50))+"</div>";
-
-      this.grid.appendChild(div);
-    }
-
-
-
-
-     window.setTimeout(this.loaderDown.bind(this),333);
+    window.setTimeout(this.loaderDown.bind(this),1333);
   }
 
   loaderUp(){
@@ -129,3 +123,36 @@ function makeid(length) {
 }
 
 
+class Loader{
+  constructor(destination){
+    this.destination = destination;
+  }
+
+  load(appandable){
+    this.destination.appendChild(appandable);
+
+    return true;
+  }
+
+  setDestination(destination){
+    this.destination = destination;
+  }
+}
+
+class TestLoader extends Loader{
+  constructor(destination){
+    super(destination);
+  }
+
+  load(){
+    for (var i = 0; i <= 50; i++) {
+      var div = document.createElement('div');
+      div.setAttribute('class', 'item');
+      div.innerHTML = "<div class='content'>"+i+" : "+makeid(Math.floor(Math.random()*500+50))+"</div>";
+
+      this.destination.appendChild(div);
+    }
+
+    return true;
+  }
+}

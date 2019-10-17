@@ -3,6 +3,7 @@
 <head>
 	<title>topmenu</title>
 
+	<script type="text/javascript" src="Topmenu.js"></script>
 	<link rel="stylesheet" type="text/css" href="main.css">
 	<link rel="stylesheet" type="text/css" href="topmenu.css">
 
@@ -183,65 +184,9 @@
 	</main>
 
 	<script type="text/javascript">
-
-
-
-
-
-	
-	window.addEventListener('load', function() {
-		initTopMenu();
+	document.addEventListener('DOMContentLoaded', function(){
+		var top = new Topmenu(null);
 	});
-		
-	
-
-	function initTopMenu(methode) {
-		if (!methode) {
-			methode = "click";
-		}
-
-
-		const inserts = document.querySelectorAll('.item');
-		console.info("initTopMenu");
-
-		for (const insert of inserts) {
-			insert.addEventListener(methode, topLink, false);
-		}
-
-		let searchinp = document.getElementById("searchinp");
-		searchinp.addEventListener("keyup", ()=>{
-			if (event.key === "Enter") {
-				search();
-			}
-		}, false);
-
-		let searchb = document.getElementById("searchb");
-		searchb.addEventListener(methode, search, false);
-	}
-
-	function topLink(event) {
-		let target = event.currentTarget.dataset.target;
-
-		if(target.indexOf('#')==0){
-			document.getElementById(target.replace('#','')).scrollIntoView();
-		}else{
-			top.window.location.href = target;
-		}
-	}
-
-	function search(){
-		top.window.location.href = "search.php?s="+document.getElementById("searchinp").value;
-	}
-
-
-
-
-
-
-
-
-
-
 	</script>
 
 <div height="0px" id="activeContainer"></div>

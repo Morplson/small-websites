@@ -1,10 +1,17 @@
 main{
 	margin-right: 6.5rem;
 }
+
+.header{
+		padding-right: 9.5rem;
+}
+
 .sidemenu{
 	position: fixed;
 	top:0;
 	right: 0;
+
+	z-index: 10;
 }
 
 .overlay{

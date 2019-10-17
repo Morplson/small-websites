@@ -1,10 +1,17 @@
 main{
 	margin-right: 6.5rem;
 }
+
+.header{
+		padding-right: 6.5rem;
+}
+
 .sidemenu{
 	position: fixed;
 	top:0;
 	right: 0;
+
+	z-index: 10;
 }
 
 .overlay{
@@ -117,6 +124,11 @@ i.cl{
 
 .sidecontainer>div::-webkit-scrollbar { 
 	display: none;
+}
+
+.sidecontainer iframe{
+	width: 100%;
+	height: 100%;
 }
 
 .closeside{

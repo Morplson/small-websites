@@ -1,5 +1,10 @@
 
+
 @import url('https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900&display=swap');
+
+:root{
+  --contentboxwidth: 13.5rem;
+}
 
 *{
 	font-size: 14pt;
@@ -25,6 +30,8 @@ body{
 	padding: 0;
 	margin: 0;
 	background-color: white;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
 }
 
 main{
@@ -640,3 +647,68 @@ footer>.bot>div{
 	padding: 0 1.5rem;
 	flex-grow: 1;
 }
+
+
+/* IFRAME */
+iframe{
+	border: none;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+}
+
+/* MAIN SPLIT */
+
+main.split{
+	overflow: hidden;
+	clear: both;
+	display: inline-block;
+}
+
+main.split>.left{
+	width: var(--contentboxwidth);
+	float: left;
+	margin: 0.25rem;
+}
+
+@media only screen and (max-width: 900px){
+	main.split>.left{
+		display: none;
+	}
+}
+
+
+
+main.split>.left .featured, main.split>.left .top{
+	margin-bottom: 0.25rem;
+}
+
+main.split>.left .top{
+}
+
+main.split>.left .item{
+	box-sizing: border-box;
+}
+
+main.split>.left .top .item{
+	width: calc(var(--contentboxwidth)/2) ;
+	display: inline-block;
+	float: left;
+}
+
+
+
+main.split>.right{
+	margin-left: var(--contentboxwidth);
+	margin: 0.5rem;
+}
+
+/* ITEM CONTAINER */
+
+main .item {
+  border: 1px solid #E8E8E8;
+  padding: 0.25rem;
+  word-break:break-all;
+}
+

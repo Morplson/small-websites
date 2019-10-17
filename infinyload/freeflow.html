@@ -2,15 +2,14 @@
 <html>
 <head>
   <script type="text/javascript" src="Infinyload.js"></script>
+<link rel="stylesheet" type="text/css" href="Infinyload.css">
+
   <style type="text/css">
 
 
 /* Non-grid specific CSS */  
 @import url('https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900&display=swap');
 
-:root{
-  --contentboxwidth: 13.5rem;
-}
 
 *{
   font-size: 14pt;
@@ -38,57 +37,9 @@ body{
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
-
-.grid {
-  margin: 0.5rem;
-  display: grid;
-  grid-gap: 0.5rem;
-  grid-template-columns: repeat(auto-fill, minmax(var(--contentboxwidth),1fr));
-  grid-auto-rows: 0;
-}
-
-.item {
-  border: 1px solid #E8E8E8;
-  padding: 0.25rem;
-  word-break:break-all;
-
-}
-
-.animate{
-  opacity: 0;
-  -webkit-transform: translateY(6rem);
-  transform: translateY(6rem);
-  -webkit-animation: moveUp 0.66s ease forwards;
-  animation: moveUp 0.66s ease forwards;
-}
-
-@-webkit-keyframes moveUp {
-  0% { }
-  100% { -webkit-transform: translateY(0); opacity: 1; }
-}
-
-@keyframes moveUp {
-  0% { }
-  100% { -webkit-transform: translateY(0); transform: translateY(0); opacity: 1; }
-}
-
-
-.loaderbox{
-  transition: height 0.3s ease;
-
-  border: 0;
-  background-color: white;
-
-  position: fixed;
-  bottom: 0;
-  display: inline-block;
-  width: 100%;
-
-}
-
-
-
   </style>
+
+
 
   <title></title>
   
@@ -98,7 +49,9 @@ body{
 
 </div>
 <script type="text/javascript">
-  var inf = new Infinyload("inf01");
+  document.addEventListener('DOMContentLoaded', function(){
+    var inf = new Infinyload("inf01");
+  });
 </script>
 </body>
 </html>

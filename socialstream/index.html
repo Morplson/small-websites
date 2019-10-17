@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+
+<meta charset="utf-8">
+<meta lang="en/us">
+
 <html>
 <head>
 	<title>Index</title>
@@ -6,27 +10,14 @@
 	<link rel="stylesheet" type="text/css" href="main.css">
 	<link rel="stylesheet" type="text/css" href="topmenu.css">
 	<link rel="stylesheet" type="text/css" href="sidemenu.css">
+	<link rel="stylesheet" type="text/css" href="Infinyload.css">
+
+	<script type="text/javascript" src="Topmenu.js"></script>
+	<script type="text/javascript" src="Sidemenu.js"></script>
+	<script type="text/javascript" src="Infinyload.js"></script>
 
 </head>
 <body>
-
-	<header class="header">
-		<div data-target="index.html" class="label item">Index</div>
-		<div data-target="bubblemenu.html" class="item">bubble</div>
-		<div data-target="#id3" class="item">3col</div>
-		
-
-
-		<div class="item search">
-			<input id="searchinp" class="searchinp" type="text" placeholder="Search..." name="sInput">
-			<div id="searchb" class="searchb">Suche</div>
-		</div>
-		
-		<div class="misc">
-			<script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Support Us', '#9046b8', 'F2F1TG5Q');kofiwidget2.draw();</script>
-		</div>
-		
-	</header>
 
 	<aside class="sidemenu">
 		<div class="overlay" id="overlay"></div>
@@ -56,4 +47,52 @@
 		</div>
 	</aside>
 
-	<main>
+	<header class="header">
+		<div data-target="index.html" class="label item">Index</div>
+		<div data-target="bubblemenu.html" class="item">bubble</div>
+		<div data-target="#id3" class="item">3col</div>
+		
+
+
+		<div class="item search">
+			<input id="searchinp" class="searchinp" type="text" placeholder="Search..." name="sInput">
+			<div id="searchb" class="searchb">Suche</div>
+		</div>
+		
+		<div class="misc">
+			<script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Support Us', '#9046b8', 'F2F1TG5Q');kofiwidget2.draw();</script>
+		</div>
+		
+	</header>
+
+
+
+	<main class="split">
+		<div class="left">
+			<div class="featured" id="featured">
+				<div class="item">asdasd</div>
+			</div>
+			<div class="top" id="top">
+				<div class="item">asdasd</div>
+				<div class="item">asdasd</div>
+				<div class="item">asdasd</div>
+				<div class="item">asdasd</div>
+			</div>
+		</div>
+		<div class="right">
+			<div class="grid" id="inf01">
+
+			</div>
+		</div>
+	</main>
+
+
+	<script type="text/javascript">
+		
+			var top = new Topmenu(null);
+			var side = new Sidemenu();
+
+			var inf = new Infinyload("inf01",new TestLoader(null));
+	</script>
+
+</body>

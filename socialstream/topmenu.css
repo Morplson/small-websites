@@ -105,6 +105,7 @@ main{
 
 	.header>.item{
 		order: 2;
+		flex-grow: 1;
 	}
 
 	.header>.item.label{
