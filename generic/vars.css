@@ -1,0 +1,31 @@
+:root{
+
+	/* COLORS */
+	--text: #000000;
+	--textsecondary:#aaa;
+
+	--background: #ffffff;
+	--backgroundsecondary: #ffffff;
+	--actent: #E8E8E8;
+	--actentsecondary: #E8E8E8;
+	--shadow: #999999;
+
+	--warn-background: #ffffff;
+	--warn-actent: #E8E8E8;
+	--warn-highlight: #999999;
+
+	--info-background: #ffffff;
+	--info-actent: #E8E8E8;
+	--info-highlight: #999999;
+
+	--success-background: #ddffdd;
+	--success-actent: #4CAF50;
+	--success-highlight: #7ece80;
+
+	--danger-background: #ffdddd;
+	--danger-actent: #f44336;
+	--danger-highlight: #fb746a;
+
+	/* BOX SICES */
+	--contentboxwidth: 13.5rem;
+}
